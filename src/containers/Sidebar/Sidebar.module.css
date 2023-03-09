@@ -1,0 +1,36 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-right: 1px solid #868695;
+  z-index: 99999;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sidebar li:hover {
+  background-color: #cb11ab;
+  color: #fff;
+}
+
+.sidebar li:not(:last-child) {
+  margin-bottom: 10px;
+}
