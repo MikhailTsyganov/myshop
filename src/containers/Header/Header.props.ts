@@ -1,4 +1,4 @@
 export interface HeaderProps {
-  height: string;
+  height?: string;
   onOpenSidebar: () => void;
 }

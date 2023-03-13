@@ -1,34 +1,32 @@
 import { FC } from "react";
 import { HeaderProps } from ".";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+
 import { BsFillPersonFill, BsCart4 } from "react-icons/bs";
+import { Container } from "../../components/Container";
+import { BurgerButton } from "../../components/BurgerButton";
+import { Search } from "../../components/Search";
+import { HeaderPersonalButton } from "../../components/HeaderPersonalButton";
 
 import s from "./Header.module.css";
 
 export const Header: FC<HeaderProps> = ({ height, onOpenSidebar }) => {
   return (
     <header style={{ height }} className={s.header}>
-      <div className={s.container}>
+      <Container>
         <div className={s.menuWrapper}>
-          <button type="button" className={s.burger} onClick={onOpenSidebar}>
-            <div></div>
-          </button>
+          <BurgerButton onOpenSidebar={onOpenSidebar} />
           {/* react-router */}
-          <a href="/" className={s.logo}></a>
-          <label className={s.searchWrapper}>
-            <HiOutlineMagnifyingGlass className={s.magnify} />
-            <input type="text" className={s.search} placeholder="Я ищу..." />
-          </label>
-          <button className={s.personalButton}>
+          {/* <a href="." className={s.logo}></a> */}
+
+          <Search />
+          <HeaderPersonalButton text="Войти">
             <BsFillPersonFill />
-            <span>Войти</span>
-          </button>
-          <button className={s.personalButton}>
+          </HeaderPersonalButton>
+          <HeaderPersonalButton text="Корзина">
             <BsCart4 />
-            <span>Корзина</span>
-          </button>
+          </HeaderPersonalButton>
         </div>
-      </div>
+      </Container>
     </header>
   );
 };
