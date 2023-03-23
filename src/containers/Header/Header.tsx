@@ -2,18 +2,21 @@ import { FC } from "react";
 import { HeaderProps } from ".";
 
 import { BsFillPersonFill, BsCart4 } from "react-icons/bs";
-import { Container } from "../../components/Container";
-import { BurgerButton } from "../../components/BurgerButton";
-import { Search } from "../../components/Search";
-import { HeaderPersonalButton } from "../../components/HeaderPersonalButton";
 
-import s from "./Header.module.css";
+import { StyledHeader } from "./Header.styles";
+import {
+  Wrapper,
+  Container,
+  BurgerButton,
+  Search,
+  HeaderPersonalButton,
+} from "components";
 
 export const Header: FC<HeaderProps> = ({ height, onOpenSidebar }) => {
   return (
-    <header style={{ height }} className={s.header}>
+    <StyledHeader height={height}>
       <Container>
-        <div className={s.menuWrapper}>
+        <Wrapper display="flex">
           <BurgerButton onOpenSidebar={onOpenSidebar} />
           {/* react-router */}
           {/* <a href="." className={s.logo}></a> */}
@@ -25,8 +28,8 @@ export const Header: FC<HeaderProps> = ({ height, onOpenSidebar }) => {
           <HeaderPersonalButton text="Корзина">
             <BsCart4 />
           </HeaderPersonalButton>
-        </div>
+        </Wrapper>
       </Container>
-    </header>
+    </StyledHeader>
   );
 };

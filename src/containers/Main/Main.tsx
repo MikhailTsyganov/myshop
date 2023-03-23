@@ -1,31 +1,43 @@
 import { FC } from "react";
 import { MainProps } from ".";
-import { Container } from "../../components/Container";
+
+import { StyledMain } from "./Main.styles";
+import {
+  Container,
+  ListGoods,
+  ButtonStandart,
+  Wrapper,
+  ButtonHomeInfo,
+} from "components";
+
+import { BsArrowDownShort } from "react-icons/bs";
 
 import { allGoods } from "../../api/allGoods";
 
-import s from "./Main.module.css";
-
 export const Main: FC<MainProps> = () => {
   return (
-    <main>
+    <StyledMain>
       <Container>
-        <div className={s.sliderWrapper}></div>
+        <Wrapper
+          height="412px"
+          width="100%"
+          margin="0 0 36px"
+          bgc="red"
+        ></Wrapper>
 
-        <ul className={s.goodsWrapper}>
-          {allGoods.map(({ id, img, name, price }) => (
-            <li key={id} className={s.goodsItem}>
-              <img src={img} alt={name} />
-              <p>{price}</p>
-              <h3>{name}</h3>
-            </li>
-          ))}
-        </ul>
-        <button type="button" className={s.showMore}>
+        <ListGoods array={allGoods} type="main" />
+
+        <ButtonStandart outlined padding="11px 84px 13px 64px" type="button">
           Показать еще
-        </button>
+          <BsArrowDownShort width="2em" height="2em" />
+        </ButtonStandart>
 
-        <div className={s.aboutWrapper}>
+        <Wrapper
+          display="home-info"
+          margin="72px 0 0"
+          height="136px"
+          overflow="hidden"
+        >
           <h2>Широкий ассортимент и высокое качество</h2>
           <p>
             Интернет-магазин Wildberries – это доступные цены, широкий,
@@ -93,9 +105,9 @@ export const Main: FC<MainProps> = () => {
             продукции для дома, продуктов питания и книг в Wildberries уже
             сейчас.
           </p>
-          <button type="button">Свернуть</button>
-        </div>
+        </Wrapper>
+        <ButtonHomeInfo>Читать далее</ButtonHomeInfo>
       </Container>
-    </main>
+    </StyledMain>
   );
 };

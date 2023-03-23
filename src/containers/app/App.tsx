@@ -3,7 +3,7 @@ import { Header } from "../Header";
 import { Main } from "../Main";
 import { Footer } from "../Footer";
 import { Sidebar } from "../Sidebar";
-import { Backdrop } from "../../components/Backdrop";
+import { Backdrop } from "components";
 
 function App() {
   const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);

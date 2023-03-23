@@ -1,24 +1,23 @@
 import styled from "styled-components";
+import { StyledButtonStandart } from "../ButtonStandart/ButtonStandart.styles";
 
-export const StyledBurgerButton = styled.button`
+export const StyledButtonBurger = styled(StyledButtonStandart)`
   position: relative;
   min-width: 48px;
   height: 48px;
   margin-right: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid ${({ theme }) => theme.colors.semitransparent};
   background-color: inherit;
-  border-radius: 8px;
-  cursor: pointer;
 
   &:hover {
-    border: 1px solid #fff;
+    border: 1px solid ${({ theme }) => theme.colors.white};
   }
 
   div {
     width: 28px;
     height: 4px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 4px;
 
     &::after {
@@ -29,7 +28,7 @@ export const StyledBurgerButton = styled.button`
       transform: translateX(-50%);
       width: 28px;
       height: 4px;
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.colors.white};
       border-radius: 4px;
     }
 
@@ -42,7 +41,7 @@ export const StyledBurgerButton = styled.button`
       width: 28px;
       height: 4px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: ${({ theme }) => theme.colors.white};
       border-radius: 4px;
     }
   }

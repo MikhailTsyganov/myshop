@@ -6,6 +6,7 @@ export const theme = {
     secondary: "#481173",
     semitransparent: "rgba(255, 255, 255, 0.5)",
     white: "#fff",
+    black: "#000",
     searchBackground: "rgba(255, 255, 255, 0.2)",
     borderSidebar: "#868695",
     backdrop: "rgba(0, 0, 0, 0.5)",

@@ -13,7 +13,7 @@ export const StyledLabel = styled.label`
     top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    stroke: rgba(255, 255, 255, 0.5);
+    stroke: ${({ theme }) => theme.colors.semitransparent};
     pointer-events: none;
   }
 `;
@@ -29,10 +29,10 @@ export const StyledInput = styled.input.attrs({
   border: none;
   border-radius: 56px;
   font-size: 18px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${({ theme }) => theme.colors.searchBackground};
   outline: none;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: ${({ theme }) => theme.colors.semitransparent};
   }
 `;

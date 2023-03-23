@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { {{pascalCase}}Props } from '.';
+import { Styled{{pascalCase}} } from './{{pascalCase}}.styles';
 
 export const {{pascalCase}}: FC<{{pascalCase}}Props> = (props) => {
-	return <div {...props}></div>;
+	return <Styled{{pascalCase}}></Styled{{pascalCase}}>;
 };
