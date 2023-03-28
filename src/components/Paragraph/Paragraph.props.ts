@@ -1,5 +1,4 @@
-export interface Title2Props {
-  color?: string;
+export interface ParagraphProps {
   children: React.ReactNode;
   fSize?: string;
   black?: boolean;

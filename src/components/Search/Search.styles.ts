@@ -3,8 +3,6 @@ import styled from "styled-components";
 export const StyledLabel = styled.label`
   position: relative;
   width: 100%;
-  margin-left: 20px;
-  margin-right: 50px;
 
   svg {
     width: 24px;

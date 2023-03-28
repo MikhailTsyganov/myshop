@@ -3,4 +3,7 @@ export interface Title3Props {
   margin?: string;
   fSize?: string;
   children: React.ReactNode;
+  black?: boolean;
+  white?: boolean;
+  grey?: boolean;
 }

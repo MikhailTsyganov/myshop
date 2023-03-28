@@ -8,8 +8,14 @@ export const theme = {
     white: "#fff",
     black: "#000",
     searchBackground: "rgba(255, 255, 255, 0.2)",
-    borderSidebar: "#868695",
+    grey: "#868695",
     backdrop: "rgba(0, 0, 0, 0.5)",
+  },
+  media: {
+    xs: "(max-width: 767px)",
+    sm: "(min-width: 768px) and (max-width: 1023px)",
+    md: "(min-width: 1024px) and (max-width: 1199px)",
+    lg: "(min-width: 1200px)",
   },
 };
 

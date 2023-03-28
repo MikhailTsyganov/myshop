@@ -1,16 +1,14 @@
 import styled, { css } from "styled-components";
 
-interface ITitle {
+interface IParagraph {
   fSize?: string;
   black?: boolean;
   white?: boolean;
   grey?: boolean;
 }
 
-export const StyledTitle2 = styled.h2<ITitle>`
-  color: ${(props) => props.color};
-  margin: 0 auto;
-  font-size: ${(props) => props.fSize || "20px"};
+export const StyledParagraph = styled.p<IParagraph>`
+  font-size: ${(props) => props.fSize || "16px"};
 
   ${({ black }) =>
     black &&
@@ -22,7 +20,7 @@ export const StyledTitle2 = styled.h2<ITitle>`
     css`
       color: ${({ theme }) => theme.colors.white};
     `}
-  ${({ grey }) =>
+${({ grey }) =>
     grey &&
     css`
       color: ${({ theme }) => theme.colors.grey};

@@ -9,10 +9,15 @@ interface StyledButtonStandartProps {
   fWeight?: string;
   borderRadius?: string;
   textAlign?: "start" | "center" | "end";
+  display?: "block" | "flex" | "inline-block" | "inline";
+  align?: "start" | "center" | "end";
+  justify?: "start" | "center" | "end";
 }
 
 export const StyledButtonStandart = styled.button<StyledButtonStandartProps>`
-  display: block;
+  display: ${({ display }) => display || "block"};
+  align-items: ${({ align }) => align};
+  justify-content: ${({ justify }) => justify};
   margin: ${({ margin }) => margin || "0 auto"};
   padding: ${({ padding }) => padding || 0};
 

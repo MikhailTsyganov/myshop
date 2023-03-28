@@ -5,4 +5,7 @@ export interface ButtonStandartProps {
   outlined?: boolean;
   padding?: string;
   margin?: string;
+  display?: "block" | "flex" | "inline-block" | "inline";
+  align?: "start" | "center" | "end";
+  justify?: "start" | "center" | "end";
 }

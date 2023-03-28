@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { WrapperProps } from ".";
+import { WrapperProps } from "./Wrapper.props";
 import { StyledWrapper } from "./Wrapper.styles";
 
 export const Wrapper: FC<WrapperProps> = (props) => {

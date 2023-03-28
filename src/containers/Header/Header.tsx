@@ -12,22 +12,31 @@ import {
   HeaderPersonalButton,
 } from "components";
 
-export const Header: FC<HeaderProps> = ({ height, onOpenSidebar }) => {
+export const Header: FC<HeaderProps> = ({ onOpenSidebar }) => {
   return (
-    <StyledHeader height={height}>
+    <StyledHeader>
       <Container>
-        <Wrapper display="flex">
-          <BurgerButton onOpenSidebar={onOpenSidebar} />
-          {/* react-router */}
-          {/* <a href="." className={s.logo}></a> */}
-
-          <Search />
-          <HeaderPersonalButton text="Войти">
-            <BsFillPersonFill />
-          </HeaderPersonalButton>
-          <HeaderPersonalButton text="Корзина">
-            <BsCart4 />
-          </HeaderPersonalButton>
+        <Wrapper display="flex" flexWrap={{ md: "wrap" }}>
+          <Wrapper display="flex">
+            <BurgerButton onOpenSidebar={onOpenSidebar} />
+            {/* react-router */}
+            <Wrapper minWidth="240px" height="64px" bgc="red"></Wrapper>
+          </Wrapper>
+          <Wrapper
+            display="flex"
+            order={{ lg: 1 }}
+            // margin={{ md: "0 0 0 auto" }}
+          >
+            <HeaderPersonalButton text="Войти">
+              <BsFillPersonFill />
+            </HeaderPersonalButton>
+            <HeaderPersonalButton text="Корзина">
+              <BsCart4 />
+            </HeaderPersonalButton>
+          </Wrapper>
+          <Wrapper width="100%" margin={{ lg: "0 50px 0 20px", md: "8px 0 0" }}>
+            <Search />
+          </Wrapper>
         </Wrapper>
       </Container>
     </StyledHeader>

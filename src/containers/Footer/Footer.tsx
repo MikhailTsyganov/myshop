@@ -48,26 +48,36 @@ export const Footer: FC<FooterProps> = () => {
       <Container>
         <Wrapper display="flex" align="start">
           <Wrapper margin="0 8px 0 0" width="calc(29% - 8px * 2)">
-            <Title3 margin="0 auto 12px">Покупателям</Title3>
+            <Title3 white margin="0 auto 12px">
+              Покупателям
+            </Title3>
             <ListGoods type="footer" array={arr1}></ListGoods>
           </Wrapper>
           <Wrapper margin="0 8px 0" width="calc(29% - 8px * 2)">
             <Wrapper>
-              <Title3 margin="0 auto 12px">Партнерам</Title3>
+              <Title3 white margin="0 auto 12px">
+                Партнерам
+              </Title3>
               <ListGoods type="footer" array={arr2}></ListGoods>
             </Wrapper>
             <Wrapper margin="48px 0 0">
-              <Title3 margin="0 auto 12px">Наши проекты</Title3>
+              <Title3 white margin="0 auto 12px">
+                Наши проекты
+              </Title3>
 
               <ListGoods type="footer" array={arr3}></ListGoods>
             </Wrapper>
           </Wrapper>
           <Wrapper margin="0 8px 0" width="calc(21% - 8px * 2)">
-            <Title3 margin="0 auto 12px">Компания</Title3>
+            <Title3 white margin="0 auto 12px">
+              Компания
+            </Title3>
             <ListGoods type="footer" array={arr4}></ListGoods>
           </Wrapper>
           <Wrapper margin="0 8px 0" width="calc(21% - 8px * 2)">
-            <Title3 margin="0 auto 12px">Мы в соцсетях</Title3>
+            <Title3 white margin="0 auto 12px">
+              Мы в соцсетях
+            </Title3>
             <ListGoods type="footer" array={arr5}></ListGoods>
           </Wrapper>
         </Wrapper>

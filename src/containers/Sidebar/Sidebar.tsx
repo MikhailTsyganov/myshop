@@ -3,11 +3,11 @@ import { SidebarProps } from ".";
 // import { goods } from "api/goods";
 
 import { ListGoods, ButtonClose, Wrapper } from "components";
-import { goodsListApi } from "redux/goods/goods-list-query/goods-list-query";
+// import { goodsListApi } from "redux/goods/goods-list-query/goods-list-query";
 
-export const Sidebar: FC<SidebarProps> = ({ onCloseSidebar }) => {
-  const { data: goodsList } = goodsListApi.useGetGoodsListQuery("");
-  console.log(goodsList);
+export const Sidebar: FC<SidebarProps> = ({ goodsList, onCloseSidebar }) => {
+  // const { data: goodsList } = goodsListApi.useGetGoodsListQuery("");
+  // console.log(goodsList);
 
   return (
     <Wrapper display="sidebar">

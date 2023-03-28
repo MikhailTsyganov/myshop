@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
-interface StyledHeaderProps {
-  height?: string;
-}
-
-export const StyledHeader = styled.header<StyledHeaderProps>`
-  height: ${(props) => props.height};
-  padding-top: 16px;
+export const StyledHeader = styled.header`
+  padding: 16px 0 44px;
   background: linear-gradient(
       to right,
       ${({ theme }) => theme.colors.primary} 0,
