@@ -18,7 +18,8 @@ export const StyledHeaderPersonalButton = styled(StyledButtonStandart)`
     width: 100%;
     height: 27px;
     margin-bottom: 6px;
-    fill: ${({ theme }) => theme.colors.white};
+    /* fill: ${({ theme }) => theme.colors.white}; */
+    stroke: ${({ theme }) => theme.colors.white};
   }
 
   & > span {

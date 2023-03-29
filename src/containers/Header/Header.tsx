@@ -5,39 +5,50 @@ import { BsFillPersonFill, BsCart4 } from "react-icons/bs";
 
 import { StyledHeader } from "./Header.styles";
 import {
-  Wrapper,
   Container,
   BurgerButton,
   Search,
   HeaderPersonalButton,
 } from "components";
+import { WrapperStandart } from "components/Wrapper/WrapperStandart";
+import { WrapperPLUG } from "components/Wrapper/WrapperPLUG";
+import { WrapperHeaderPersonalButton } from "components/Wrapper/ButtonWrapper/WrapperHeaderPersonalButton";
+import { WrapperSearch } from "components/Wrapper/WrapperSearch";
+import { WrapperHeader } from "components/Wrapper/WrapperHeader";
+
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { useTheme } from "styled-components";
 
 export const Header: FC<HeaderProps> = ({ onOpenSidebar }) => {
+  const theme = useTheme();
+  console.log(theme.colors);
+
   return (
     <StyledHeader>
       <Container>
-        <Wrapper display="flex" flexWrap={{ md: "wrap" }}>
-          <Wrapper display="flex">
+        <WrapperHeader display="flex">
+          <WrapperStandart display="flex">
             <BurgerButton onOpenSidebar={onOpenSidebar} />
             {/* react-router */}
-            <Wrapper minWidth="240px" height="64px" bgc="red"></Wrapper>
-          </Wrapper>
-          <Wrapper
-            display="flex"
-            order={{ lg: 1 }}
-            // margin={{ md: "0 0 0 auto" }}
-          >
+            <WrapperPLUG minWidth="240px" height="64px" bgc="red"></WrapperPLUG>
+          </WrapperStandart>
+          <WrapperHeaderPersonalButton display="flex">
             <HeaderPersonalButton text="Войти">
               <BsFillPersonFill />
             </HeaderPersonalButton>
             <HeaderPersonalButton text="Корзина">
               <BsCart4 />
             </HeaderPersonalButton>
-          </Wrapper>
-          <Wrapper width="100%" margin={{ lg: "0 50px 0 20px", md: "8px 0 0" }}>
+            {/* for screen < 1024px */}
+            <HeaderPersonalButton>
+              <HiOutlineMagnifyingGlass fill="red" />
+            </HeaderPersonalButton>
+            {/*  */}
+          </WrapperHeaderPersonalButton>
+          <WrapperSearch>
             <Search />
-          </Wrapper>
-        </Wrapper>
+          </WrapperSearch>
+        </WrapperHeader>
       </Container>
     </StyledHeader>
   );

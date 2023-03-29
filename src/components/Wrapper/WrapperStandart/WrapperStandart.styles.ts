@@ -12,13 +12,10 @@ interface IStyledWrapper {
     | "space-around"
     | "stretch";
   flexDirection?: "row" | "column";
-  bgc?: string; // TODO: delete
   flexWrap?: "wrap" | "no-wrap";
 }
 
 export const StyledWrapperStandart = styled.div<IStyledWrapper>`
-  background-color: ${({ bgc }) => bgc};
-
   ${({ display, justify, alignItems }) => {
     switch (display) {
       case "flex":

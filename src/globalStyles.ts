@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import { DefaultTheme } from "styled-components";
 
-export const theme = {
+export const theme: DefaultTheme = {
   colors: {
     primary: "#cb11ab",
     secondary: "#481173",
@@ -13,10 +14,16 @@ export const theme = {
   },
   media: {
     xs: "(max-width: 767px)",
-    sm: "(min-width: 768px) and (max-width: 1023px)",
-    md: "(min-width: 1024px) and (max-width: 1199px)",
+    sm: "(max-width: 1023px)",
+    md: "(max-width: 1199px)",
     lg: "(min-width: 1200px)",
   },
+  // media: {
+  //   xs: "(max-width: 767px)",
+  //   sm: "(min-width: 768px) and (max-width: 1023px)",
+  //   md: "(min-width: 1024px) and (max-width: 1199px)",
+  //   lg: "(min-width: 1200px)",
+  // },
 };
 
 export const GlobalStyles = createGlobalStyle`

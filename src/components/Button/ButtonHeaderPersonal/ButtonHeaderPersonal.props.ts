@@ -1,4 +1,4 @@
 export interface ButtonHeaderPersonalProps {
-  text: string;
+  text?: string;
   children: React.ReactNode;
 }
