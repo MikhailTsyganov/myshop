@@ -21,14 +21,14 @@ function App() {
   useEffect(() => {
     if (status === "fulfilled") {
       setGoodsList(data);
-      console.log(status, data);
+      // console.log(status, data);
     }
   }, [data, status]);
 
   return (
     <>
       <Header onOpenSidebar={onToggleSidebar} />
-      {/* <Main />
+      <Main />
       <Footer />
 
       {showBackdrop && (
@@ -37,7 +37,7 @@ function App() {
             <Sidebar goodsList={goodsList} onCloseSidebar={onToggleSidebar} />
           )}
         </Backdrop>
-      )} */}
+      )}
     </>
   );
 }

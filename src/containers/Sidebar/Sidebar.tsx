@@ -1,19 +1,15 @@
 import { FC } from "react";
 import { SidebarProps } from ".";
-// import { goods } from "api/goods";
 
-import { ListGoods, ButtonClose, Wrapper } from "components";
-// import { goodsListApi } from "redux/goods/goods-list-query/goods-list-query";
+import { ListGoods, ButtonClose } from "components";
+import { WrapperSidebar } from "components/Wrapper/WrapperSidebar";
 
 export const Sidebar: FC<SidebarProps> = ({ goodsList, onCloseSidebar }) => {
-  // const { data: goodsList } = goodsListApi.useGetGoodsListQuery("");
-  // console.log(goodsList);
-
   return (
-    <Wrapper display="sidebar">
+    <WrapperSidebar>
       <ListGoods array={goodsList} type="sidebar"></ListGoods>
 
       <ButtonClose onCloseSidebar={onCloseSidebar}></ButtonClose>
-    </Wrapper>
+    </WrapperSidebar>
   );
 };

@@ -1,7 +1,7 @@
 import "styled-components";
 
 declare module "styled-components" {
-  export interface DefaultTheme {
+  export interface UseTheme {
     colors: {
       primary: string;
       secondary: string;
@@ -11,6 +11,7 @@ declare module "styled-components" {
       searchBackground: string;
       grey: string;
       backdrop: string;
+      bgcCounter: string;
     };
 
     media: {

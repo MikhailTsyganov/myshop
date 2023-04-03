@@ -21,7 +21,6 @@ import { useTheme } from "styled-components";
 
 export const Header: FC<HeaderProps> = ({ onOpenSidebar }) => {
   const theme = useTheme();
-  console.log(theme.colors);
 
   return (
     <StyledHeader>
@@ -30,18 +29,18 @@ export const Header: FC<HeaderProps> = ({ onOpenSidebar }) => {
           <WrapperStandart display="flex">
             <BurgerButton onOpenSidebar={onOpenSidebar} />
             {/* react-router */}
-            <WrapperPLUG minWidth="240px" height="64px" bgc="red"></WrapperPLUG>
+            <WrapperPLUG minWidth="240px" height="37px" bgc="red"></WrapperPLUG>
           </WrapperStandart>
           <WrapperHeaderPersonalButton display="flex">
             <HeaderPersonalButton text="Войти">
-              <BsFillPersonFill />
+              <BsFillPersonFill fill={theme.colors.white} />
             </HeaderPersonalButton>
             <HeaderPersonalButton text="Корзина">
-              <BsCart4 />
+              <BsCart4 fill={theme.colors.white} />
             </HeaderPersonalButton>
             {/* for screen < 1024px */}
             <HeaderPersonalButton>
-              <HiOutlineMagnifyingGlass fill="red" />
+              <HiOutlineMagnifyingGlass fill="transparent" />
             </HeaderPersonalButton>
             {/*  */}
           </WrapperHeaderPersonalButton>

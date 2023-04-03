@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  position: relative;
   padding: 16px 0 44px;
   background: linear-gradient(
       to right,
@@ -8,6 +9,21 @@ export const StyledHeader = styled.header`
       ${({ theme }) => theme.colors.secondary} 100%
     )
     no-repeat;
+
+  &::before {
+    position: absolute;
+    top: calc(100% - 26px);
+    content: "";
+    display: block;
+    width: 100%;
+    height: 36px;
+    border-radius: 24px 24px 0 0;
+    background-color: #fff;
+  }
+
+  @media ${({ theme }) => theme.media.sm} {
+    padding: 10px 0 25px;
+  }
 `;
 
 /* .logo {

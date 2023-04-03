@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledButtonStandart } from "../ButtonStandart/ButtonStandart.styles";
 
-export const StyledButtonHomeInfo = styled(StyledButtonStandart)`
+export const StyledButtonHomeAboutUs = styled(StyledButtonStandart)`
   border: none;
   border-bottom: 1px dashed;
   line-height: 22px;

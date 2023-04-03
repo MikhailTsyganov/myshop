@@ -3,36 +3,44 @@ import styled, { css } from "styled-components";
 interface StyledButtonStandartProps {
   primary?: boolean;
   outlined?: boolean;
-  padding?: string;
-  margin?: string;
-  fSize?: string;
-  fWeight?: string;
-  borderRadius?: string;
-  textAlign?: "start" | "center" | "end";
-  display?: "block" | "flex" | "inline-block" | "inline";
-  align?: "start" | "center" | "end";
+  display?: "flex";
+  alignItems?: "start" | "center" | "end";
   justify?: "start" | "center" | "end";
+  type?: "submit";
 }
 
-export const StyledButtonStandart = styled.button<StyledButtonStandartProps>`
-  display: ${({ display }) => display || "block"};
-  align-items: ${({ align }) => align};
-  justify-content: ${({ justify }) => justify};
-  margin: ${({ margin }) => margin || "0 auto"};
-  padding: ${({ padding }) => padding || 0};
-
-  font-size: ${({ fSize }) => fSize || "16px"};
-  font-weight: ${({ fWeight }) => fWeight || "600"};
-
-  border-radius: ${({ borderRadius }) => borderRadius || "8px"};
-  text-align: ${({ textAlign }) => textAlign || "center"};
+export const StyledButtonStandart = styled.button.attrs((props) => ({
+  type: props.type || "button",
+}))<StyledButtonStandartProps>`
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  border-radius: 8px;
+  text-align: center;
   cursor: pointer;
+
+  ${({ display, justify, alignItems }) => {
+    switch (display) {
+      case "flex":
+        return css`
+          display: flex;
+          justify-content: ${justify || "center"};
+          align-items: ${alignItems || "center"};
+        `;
+
+      default:
+        return css`
+          display: block;
+        `;
+    }
+  }};
 
   ${(props) =>
     props.primary &&
     css`
       color: ${({ theme }) => theme.colors.white};
       background-color: ${({ theme }) => theme.colors.primary};
+      border: 2px solid ${({ theme }) => theme.colors.primary};
     `}
 
   ${(props) =>

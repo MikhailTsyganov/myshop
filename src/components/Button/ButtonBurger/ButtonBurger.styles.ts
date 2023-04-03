@@ -8,6 +8,7 @@ export const StyledButtonBurger = styled(StyledButtonStandart)`
   margin-right: 20px;
   border: 1px solid ${({ theme }) => theme.colors.semitransparent};
   background-color: inherit;
+  border-radius: 8px;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.white};
@@ -44,5 +45,9 @@ export const StyledButtonBurger = styled(StyledButtonStandart)`
       background-color: ${({ theme }) => theme.colors.white};
       border-radius: 4px;
     }
+  }
+
+  @media ${({ theme }) => theme.media.sm} {
+    display: none;
   }
 `;

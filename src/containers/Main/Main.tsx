@@ -5,17 +5,19 @@ import { StyledMain } from "./Main.styles";
 import {
   Container,
   ListGoods,
-  ButtonStandart,
-  Wrapper,
-  ButtonHomeInfo,
+  ButtonHomeAboutUs,
   Title2,
   Title3,
   Paragraph,
 } from "components";
+import { Basket } from "containers/Basket";
 
 import { BsArrowDownShort } from "react-icons/bs";
 
 import { allGoods } from "../../api/allGoods";
+import { WrapperPLUG } from "components/Wrapper/WrapperPLUG";
+import { ButtonShowMore } from "components/Button/ButtonShowMore";
+import { WrapperHomeAboutUs } from "components/Wrapper/WrapperHomeAboutUs";
 
 const aboutUs = [
   {
@@ -82,32 +84,21 @@ export const Main: FC<MainProps> = () => {
   return (
     <StyledMain>
       <Container>
-        <Wrapper
+        {/* <WrapperPLUG
           height="412px"
-          width="100%"
+          minWidth="100%"
           margin="0 0 36px"
           bgc="red"
-        ></Wrapper>
+        ></WrapperPLUG>
 
         <ListGoods array={allGoods} type="main" />
 
-        <ButtonStandart
-          outlined
-          display="flex"
-          align="center"
-          padding="11px 64px 13px"
-          type="button"
-        >
+        <ButtonShowMore outlined display="flex">
           Показать еще
           <BsArrowDownShort size={30} />
-        </ButtonStandart>
+        </ButtonShowMore>
 
-        <Wrapper
-          display="home-info"
-          margin="72px 0 0"
-          // height="136px"
-          // overflow="hidden"
-        >
+        <WrapperHomeAboutUs>
           {aboutUs.map(({ id, title, textObj }, idx) => {
             return (
               <React.Fragment key={id}>
@@ -126,8 +117,9 @@ export const Main: FC<MainProps> = () => {
               </React.Fragment>
             );
           })}
-        </Wrapper>
-        <ButtonHomeInfo>Читать далее</ButtonHomeInfo>
+          <ButtonHomeAboutUs>Читать далее</ButtonHomeAboutUs>
+        </WrapperHomeAboutUs> */}
+        <Basket />
       </Container>
     </StyledMain>
   );

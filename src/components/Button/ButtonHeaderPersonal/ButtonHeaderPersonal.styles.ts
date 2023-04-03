@@ -11,7 +11,10 @@ export const StyledHeaderPersonalButton = styled(StyledButtonStandart)`
   /* cursor: pointer; */
 
   &:last-child {
-    margin-left: 36px;
+    display: none;
+  }
+  &:first-child {
+    margin-right: 36px;
   }
 
   svg {
@@ -24,5 +27,13 @@ export const StyledHeaderPersonalButton = styled(StyledButtonStandart)`
 
   & > span {
     color: ${({ theme }) => theme.colors.semitransparent};
+  }
+
+  @media ${({ theme }) => theme.media.sm} {
+    display: none;
+
+    &:last-child {
+      display: block;
+    }
   }
 `;

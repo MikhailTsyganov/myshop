@@ -11,6 +11,7 @@ export const theme: DefaultTheme = {
     searchBackground: "rgba(255, 255, 255, 0.2)",
     grey: "#868695",
     backdrop: "rgba(0, 0, 0, 0.5)",
+    bgcCounter: "#f1f1f5",
   },
   media: {
     xs: "(max-width: 767px)",
@@ -51,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
       monospace;
   }
   
-  ul {
+  ul,p {
     padding: 0;
     margin: 0;
   }
