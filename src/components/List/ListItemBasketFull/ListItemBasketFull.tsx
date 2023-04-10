@@ -1,22 +1,9 @@
 import React, { FC, useState } from "react";
-import { ListBasketFullProps, ListItemBasketFullProps } from ".";
-import {
-  StyledListBasketFull,
-  StyledListItemBasketFull,
-} from "./ListBasketFull.styles";
+import { ListItemBasketFullProps } from ".";
+import { StyledListItemBasketFull } from "./ListItemBasketFull.styles";
+
 import { Counter } from "components";
 import { ParagraphFullBasket } from "components/Paragraph/ParagraphFullBasket";
-
-export const ListBasketFull: FC<ListBasketFullProps> = (props) => {
-  const { array } = props;
-  return (
-    <StyledListBasketFull {...props}>
-      {array.map((item) => {
-        return <ListItemBasketFull item={item} key={item.id} />;
-      })}
-    </StyledListBasketFull>
-  );
-};
 
 export const ListItemBasketFull: FC<ListItemBasketFullProps> = ({ item }) => {
   const { id, name, price, img, color, location, quantity } = item;
@@ -26,7 +13,6 @@ export const ListItemBasketFull: FC<ListItemBasketFullProps> = ({ item }) => {
   const getCounterValue = (value: number) => {
     setCounterValue(value);
   };
-  // console.log(counterValue);
 
   return (
     <StyledListItemBasketFull key={id}>

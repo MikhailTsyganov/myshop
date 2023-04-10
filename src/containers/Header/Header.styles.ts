@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.header<{ view?: "basket" }>`
   position: relative;
   padding: 16px 0 44px;
   background: linear-gradient(
@@ -10,7 +10,7 @@ export const StyledHeader = styled.header`
     )
     no-repeat;
 
-  &::before {
+  &::after {
     position: absolute;
     top: calc(100% - 26px);
     content: "";
@@ -18,7 +18,20 @@ export const StyledHeader = styled.header`
     width: 100%;
     height: 36px;
     border-radius: 24px 24px 0 0;
-    background-color: #fff;
+
+    ${({ view, theme }) => {
+      switch (view) {
+        case "basket":
+          return css`
+            background-color: ${theme.colors.bgcBasket};
+          `;
+
+        default:
+          return css`
+            background-color: ${theme.colors.white};
+          `;
+      }
+    }}
   }
 
   @media ${({ theme }) => theme.media.sm} {

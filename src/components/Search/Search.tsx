@@ -3,7 +3,7 @@ import { SearchProps } from ".";
 import { StyledLabel, StyledInput } from "./Search.styles";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
-import { goodsSlice } from "redux/goods/goods-reducer";
+import { goodsSlice } from "redux/reducers/goods-reducer";
 
 // import { useState } from "react";
 

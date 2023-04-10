@@ -1,14 +1,15 @@
-import { forwardRef } from "react";
 import { ButtonCounterProps } from ".";
 import { StyledButtonCounter } from "./ButtonCounter.styles";
+import { FC } from "react";
 
-export const ButtonCounter = forwardRef<HTMLDivElement, ButtonCounterProps>(
-  (props, ref) => {
-    const { children } = props;
-    return (
-      <div ref={ref}>
-        <StyledButtonCounter {...props}>{children}</StyledButtonCounter>
-      </div>
-    );
-  }
-);
+export const ButtonCounter: FC<ButtonCounterProps> = (props) => {
+  // console.log(props);
+
+  const { children, isDisabled } = props;
+
+  return (
+    <StyledButtonCounter disabled={isDisabled} {...props}>
+      {children}
+    </StyledButtonCounter>
+  );
+};

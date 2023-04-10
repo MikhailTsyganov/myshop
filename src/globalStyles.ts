@@ -12,6 +12,7 @@ export const theme: DefaultTheme = {
     grey: "#868695",
     backdrop: "rgba(0, 0, 0, 0.5)",
     bgcCounter: "#f1f1f5",
+    bgcBasket: "#f6f6f9",
   },
   media: {
     xs: "(max-width: 767px)",

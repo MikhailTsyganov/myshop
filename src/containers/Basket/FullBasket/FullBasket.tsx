@@ -1,16 +1,17 @@
 import { ButtonBasketFullDeliveryAddress, Title1, Title2 } from "components";
 import { WrapperBasketFull } from "components/Wrapper/WrapperBasket/WrapperBasketFull";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { FullBasketProps } from ".";
 import { StyledFullBasket } from "./FullBasket.styles";
 import { WrapperBasketFullFlex } from "components";
 
 import testImg from "../../../assets/images/shampoo.jpg";
-import { ListBasketFull } from "components/List/ListBasketFull";
+import { ListItemBasketFull } from "components/List/ListItemBasketFull";
 import { ButtonStandart } from "components/Button/ButtonStandart";
 import { ButtonBasketFullOrder } from "components/Button/ButtonBasketFull/ButtonBasketFullOrder";
 import { ParagraphFullBasket } from "components/Paragraph/ParagraphFullBasket";
 import { WrapperStandart } from "components/Wrapper/WrapperStandart";
+import { List } from "components/List/List";
 const selectedGoods = [
   {
     id: 1,
@@ -18,7 +19,7 @@ const selectedGoods = [
     price: 370,
     img: testImg,
     color: ["white", "green"],
-    country: "China",
+    location: "China",
     quantity: 11,
   },
   {
@@ -27,22 +28,47 @@ const selectedGoods = [
     price: 370,
     img: testImg,
     color: ["white", "green"],
-    country: "China",
+    location: "China",
     quantity: 11,
   },
 ];
 
 export const FullBasket: FC<FullBasketProps> = (props) => {
-  const [total, setTotal] = useState(0);
+  const requestHandler = () => {
+    fetch("http://localhost:5000/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "myusername1",
+        email: "myemail@example1.com",
+        password: "mypasswor1d",
+      }),
+    })
+      // fetch("http://localhost:3306/", {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+
+      // })
+      .then((response) => response.json())
+      .then((data) => {
+        // сохраняем полученный токен в localStorage или в cookies
+        // localStorage.setItem("token", data.token);
+        console.log("register", data);
+      });
+  };
 
   return (
     <StyledFullBasket {...props}>
       <WrapperStandart>
         <WrapperBasketFull>
           <Title1>Корзина</Title1>
-          <ListBasketFull array={selectedGoods} />
+          <List Component={ListItemBasketFull} array={selectedGoods} />
         </WrapperBasketFull>
-        <WrapperBasketFull>
+        <WrapperBasketFull className="WrapperBasketFullAddress">
           <Title2>Способ доставки</Title2>
           <ParagraphFullBasket>
             <a href="">Выбрать адрес доставки</a>
@@ -74,9 +100,11 @@ export const FullBasket: FC<FullBasketProps> = (props) => {
         </ParagraphFullBasket>
         <WrapperStandart display="flex" justify="space-between">
           <ParagraphFullBasket big>Итого</ParagraphFullBasket>
-          <ParagraphFullBasket big>{total}</ParagraphFullBasket>
+          <ParagraphFullBasket big>Типа 0</ParagraphFullBasket>
         </WrapperStandart>
-        <ButtonBasketFullOrder primary>Заказать</ButtonBasketFullOrder>
+        <ButtonBasketFullOrder primary onClick={requestHandler}>
+          Заказать
+        </ButtonBasketFullOrder>
       </WrapperBasketFull>
     </StyledFullBasket>
   );

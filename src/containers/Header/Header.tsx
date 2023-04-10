@@ -19,11 +19,12 @@ import { WrapperHeader } from "components/Wrapper/WrapperHeader";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { useTheme } from "styled-components";
 
-export const Header: FC<HeaderProps> = ({ onOpenSidebar }) => {
+export const Header: FC<HeaderProps> = (props) => {
+  const { onOpenSidebar, view } = props;
   const theme = useTheme();
 
   return (
-    <StyledHeader>
+    <StyledHeader view={view}>
       <Container>
         <WrapperHeader display="flex">
           <WrapperStandart display="flex">

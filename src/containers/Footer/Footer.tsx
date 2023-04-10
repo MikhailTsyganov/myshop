@@ -57,9 +57,9 @@ const arr5 = {
   ],
 };
 
-export const Footer: FC<FooterProps> = () => {
+export const Footer: FC<FooterProps> = (props) => {
   return (
-    <StyledFooter>
+    <StyledFooter {...props}>
       <Container>
         <Wrapper display="flex" align="start">
           <Wrapper margin="0 8px 0 0" width="calc(29% - 8px * 2)">

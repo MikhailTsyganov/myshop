@@ -1,5 +1,5 @@
 import { ButtonCounter, WrapperCounter } from "components";
-import React, { FC, useState, useRef, useEffect } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { CounterProps } from ".";
 import { StyledCounter } from "./Counter.styles";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
@@ -9,19 +9,13 @@ export const Counter: FC<CounterProps> = (props) => {
 
   const [value, setValue] = useState(1);
 
-  const decrementEl: any = useRef();
-
   useEffect(() => {
-    const decrementButton = decrementEl.current.children[0];
-
-    value === 1
-      ? decrementButton.setAttribute("disabled", "true")
-      : decrementButton.removeAttribute("disabled");
-
     getCounterValue(value);
-  }, [value]);
+  }, [value, getCounterValue]);
 
   const onCounterHandler = (e: React.MouseEvent) => {
+    console.log(11111);
+
     switch (e.currentTarget.id) {
       case "increment":
         setValue((prevState) => prevState + 1);
@@ -37,7 +31,7 @@ export const Counter: FC<CounterProps> = (props) => {
       <ButtonCounter
         id="decrement"
         onClick={onCounterHandler}
-        ref={decrementEl}
+        isDisabled={value === 1}
       >
         <AiOutlineMinus />
       </ButtonCounter>

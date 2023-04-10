@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { ButtonStandart } from "../ButtonStandart";
+import { StyledButtonStandart } from "../ButtonStandart/ButtonStandart.styles";
 
-export const StyledButtonCounter = styled(ButtonStandart)`
+export const StyledButtonCounter = styled(StyledButtonStandart)`
   display: flex;
   justify-content: center;
   align-items: center;

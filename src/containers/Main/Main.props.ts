@@ -1,1 +1,4 @@
-export interface MainProps {};
+export interface MainProps {
+  view?: "basket";
+  goods: {}[];
+}

@@ -1,7 +1,3 @@
-export interface ListBasketFullProps {
-  array: IListItemBasketFull[];
-}
-
 export interface ListItemBasketFullProps {
   item: IListItemBasketFull;
 }
