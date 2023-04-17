@@ -14,8 +14,6 @@ export const Counter: FC<CounterProps> = (props) => {
   }, [value, getCounterValue]);
 
   const onCounterHandler = (e: React.MouseEvent) => {
-    console.log(11111);
-
     switch (e.currentTarget.id) {
       case "increment":
         setValue((prevState) => prevState + 1);

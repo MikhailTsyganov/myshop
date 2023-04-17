@@ -1,23 +1,22 @@
 import { FC } from "react";
-import { HeaderProps } from ".";
-
+import { useTheme } from "styled-components";
 import { BsFillPersonFill, BsCart4 } from "react-icons/bs";
+import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
+import { HeaderProps } from ".";
 import { StyledHeader } from "./Header.styles";
+
 import {
   Container,
   BurgerButton,
   Search,
   HeaderPersonalButton,
+  WrapperStandart,
+  WrapperPLUG,
+  WrapperHeaderPersonalButton,
+  WrapperSearch,
+  WrapperHeader,
 } from "components";
-import { WrapperStandart } from "components/Wrapper/WrapperStandart";
-import { WrapperPLUG } from "components/Wrapper/WrapperPLUG";
-import { WrapperHeaderPersonalButton } from "components/Wrapper/ButtonWrapper/WrapperHeaderPersonalButton";
-import { WrapperSearch } from "components/Wrapper/WrapperSearch";
-import { WrapperHeader } from "components/Wrapper/WrapperHeader";
-
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { useTheme } from "styled-components";
 
 export const Header: FC<HeaderProps> = (props) => {
   const { onOpenSidebar, view } = props;

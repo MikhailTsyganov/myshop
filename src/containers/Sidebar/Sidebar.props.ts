@@ -1,4 +1,6 @@
+import { TListItemSidebar } from "components";
+
 export interface SidebarProps {
-  goodsList: { id: number; name: string }[];
+  goodsList: TListItemSidebar[];
   onCloseSidebar: () => void;
 }

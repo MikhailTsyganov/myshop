@@ -1,2 +1,3 @@
-export * from './Paragraph';
-export * from './Paragraph.props';
+export * from "./ParagraphEmptyBasket/index";
+export * from "./ParagraphFullBasket/index";
+export * from "./ParagraphStandart/index";
