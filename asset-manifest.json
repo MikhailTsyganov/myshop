@@ -1,14 +1,10 @@
 {
   "files": {
-    "main.css": "/myshop/static/css/main.8822ea75.css",
-    "main.js": "/myshop/static/js/main.3cf91631.js",
-    "static/media/shampoo.jpg": "/myshop/static/media/shampoo.670b0c500b3e6550fe27.jpg",
+    "main.js": "/myshop/static/js/main.a997f871.js",
     "index.html": "/myshop/index.html",
-    "main.8822ea75.css.map": "/myshop/static/css/main.8822ea75.css.map",
-    "main.3cf91631.js.map": "/myshop/static/js/main.3cf91631.js.map"
+    "main.a997f871.js.map": "/myshop/static/js/main.a997f871.js.map"
   },
   "entrypoints": [
-    "static/css/main.8822ea75.css",
-    "static/js/main.3cf91631.js"
+    "static/js/main.a997f871.js"
   ]
 }
