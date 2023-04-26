@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface ITitle {
+  margin?: string;
   fSize?: string;
   black?: boolean;
   white?: boolean;
@@ -9,7 +10,7 @@ interface ITitle {
 
 export const StyledTitle2 = styled.h2<ITitle>`
   color: ${(props) => props.color};
-  margin: 0 auto;
+  margin: ${(props) => props.margin || "0 auto"};
   font-size: ${(props) => props.fSize || "20px"};
 
   ${({ black }) =>

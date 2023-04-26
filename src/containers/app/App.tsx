@@ -24,9 +24,16 @@ function App() {
 
   return (
     <>
-      <Header view="basket" onOpenSidebar={onToggleSidebar} />
-      <Main view="basket" />
-      <Footer view="basket" />
+      <Header
+        // view="basket"
+        onOpenSidebar={onToggleSidebar}
+      />
+      <Main
+      // view="basket"
+      />
+      <Footer
+      // view="basket"
+      />
 
       {showBackdrop && (
         <Backdrop onCloseSidebar={onToggleSidebar}>

@@ -2,6 +2,7 @@ export * from "./Backdrop";
 export * from "./Button";
 export * from "./Container";
 export * from "./Counter";
+export * from "./HomeAboutUs";
 export * from "./List";
 export * from "./ListGoods";
 export * from "./ListGoodsItem";

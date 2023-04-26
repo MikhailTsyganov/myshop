@@ -5,78 +5,47 @@ import { HomepageProps } from ".";
 import { StyledHomepage } from "./Homepage.styles";
 
 import { goodsApi } from "redux/api/goods-query/goods-query";
-import { aboutUsApi } from "redux/api/about-us-query/about-us-query";
 
 import {
   List,
   GoodsItemHomepage,
-  ListItemAboutUs,
-  ButtonHomeAboutUs,
   ButtonShowMore,
-  WrapperPLUG,
-  WrapperHomeAboutUs,
   Slider,
+  HomeAboutUs,
 } from "components";
 
 export const Homepage: FC<HomepageProps> = (props) => {
-  const [goods, setGoods] = useState([]);
-  const [aboutUs, setAboutUs] = useState([]);
+  const [goods, setGoods] = useState<{}[]>([]); ////TODO
+  const [page, setPage] = useState(1);
 
-  const goodsApiFetch = goodsApi.useGetAllGoodsQuery("");
-  const aboutUsApiFetch = aboutUsApi.useGetAboutUsQuery("");
-  // console.log(aboutUs);
+  const { data, isSuccess } = goodsApi.useGetAllGoodsQuery({ page, limit: 6 });
+  // const {allGoods} = goodsApi.useGetAllGoodsQuery({ page, limit: 6 });
 
-  // const a = aboutUs.reduce((prev, item) => {
-  //   console.log(prev, item);
-  //   return item;
-
-  //   // if (prev.id !== item.id) {
-  //   //   return { ...item };
-  //   // }
-  // }, {});
+  // console.log(allGoods);
 
   useEffect(() => {
-    setGoods(goodsApiFetch.data);
-    setAboutUs(aboutUsApiFetch.data);
-  }, [goodsApiFetch.data, aboutUsApiFetch.data]);
+    if (isSuccess) {
+      setGoods((prevState) => [...prevState, ...data]);
+    }
+  }, [data, isSuccess]);
+  console.log(goods);
+
+  const onShowMore = () => {
+    setPage((prevState) => prevState + 1);
+  };
+
   return (
     <StyledHomepage {...props}>
       <Slider />
-      {/* <WrapperPLUG
-        height="412px"
-        minWidth="100%"
-        margin="0 0 36px"
-        bgc="red"
-      ></WrapperPLUG> */}
 
-      <List display="grid" Component={GoodsItemHomepage} array={goods} />
+      {/* <List display="grid" Component={GoodsItemHomepage} array={goods} /> */}
 
-      <ButtonShowMore outlined display="flex">
+      <ButtonShowMore outlined display="flex" onClick={onShowMore}>
         Показать еще
         <BsArrowDownShort size={30} />
       </ButtonShowMore>
-      <WrapperHomeAboutUs>
-        {/* <List array={aboutUs} Component={ListItemAboutUs} /> */}
-        {/* {aboutUs.map(({ id, title, textObj }, idx) => {
-          return (
-            <React.Fragment key={id}>
-              {idx === 0 ? (
-                <Title2 black>{title}</Title2>
-              ) : (
-                <Title3 grey fSize="16px">
-                  {title}
-                </Title3>
-              )}
-              {textObj.map(({ textId, text }) => (
-                <ParagraphStandart key={textId} grey>
-                  {text}
-                </ParagraphStandart>
-              ))}
-            </React.Fragment>
-          );
-        })} */}
-        <ButtonHomeAboutUs>Читать далее</ButtonHomeAboutUs>
-      </WrapperHomeAboutUs>
+
+      <HomeAboutUs />
     </StyledHomepage>
   );
 };

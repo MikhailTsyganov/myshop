@@ -1,9 +1,9 @@
+import { StyledWrapperStandart } from "components/Wrapper/WrapperStandart/WrapperStandart.styles";
 import styled, { css } from "styled-components";
 
 export const StyledFooter = styled.footer<{ view?: "basket" }>`
   position: relative;
   padding: 68px 0 48px;
-  /* margin: 48px 0 0; */
   background-color: ${({ theme }) => theme.colors.secondary};
 
   &::before {
@@ -28,5 +28,33 @@ export const StyledFooter = styled.footer<{ view?: "basket" }>`
           `;
       }
     }}
+  }
+`;
+
+export const WrapperFooter = styled(StyledWrapperStandart)`
+  display: flex;
+  align-items: start;
+  cursor: pointer;
+
+  @media ${({ theme }) => theme.media.sm} {
+    display: block;
+
+    & > :nth-child(4) {
+      border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
+    }
+  }
+`;
+
+export const WrapperFooterItems = styled(StyledWrapperStandart)`
+  width: calc(29% - 8px * 2);
+  margin: 0px 8px;
+  & section {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  @media ${({ theme }) => theme.media.sm} {
+    width: 100%;
+    margin: 0;
   }
 `;

@@ -1,1 +1,5 @@
-export interface SliderProps {}
+export interface SliderProps {
+  array?: {}[];
+  autoplay?: boolean;
+  autoplayTime?: number;
+}

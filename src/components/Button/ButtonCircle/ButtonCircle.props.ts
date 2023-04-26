@@ -1,6 +1,6 @@
 export interface ButtonCircleProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   id?: string;
-  onClick?: (e: React.MouseEvent) => void;
+  onClick?: (e?: React.MouseEvent) => void;
 }

@@ -43,23 +43,12 @@ export const WrapperSliderImages = styled(StyledWrapperStandart)<{
     right: 28px;
   }
 
-  /* 
-  .slider_button {
-    position: absolute;
-
-    :first-child {
-      left: 28px;
-    }
-    :nth-child(2) {
-      right: 28px;
-    }
-  } */
-
   & > .images_container {
     display: flex;
     height: 100%;
-    min-width: 100%;
-    transform: translateX(${({ offset }) => offset}px);
+    transform: translateX(
+      ${({ offset }) => -offset}px
+    ); // перед offset стоит минус
     transition: transform ease 1s;
 
     & img {
@@ -72,7 +61,19 @@ export const WrapperSliderImages = styled(StyledWrapperStandart)<{
 export const WrapperSliderPagination = styled(StyledWrapperStandart)`
   width: 200px;
   height: 20px;
-  /* margin-top: 22px; */
   margin: 22px auto 0;
-  background-color: red;
+  /* border: 1px solid red; */
+
+  & ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  & li {
+    /* margin-right: 15px; */
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
 `;

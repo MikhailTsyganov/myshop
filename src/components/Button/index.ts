@@ -5,6 +5,7 @@ export * from "./ButtonEmptyBasket/index";
 export * from "./ButtonHeaderPersonal/index";
 export * from "./ButtonHomeAboutUs/index";
 export * from "./ButtonShowMore/index";
+export * from "./ButtonSliderDots/index";
 export * from "./ButtonCounter/index";
 export * from "./ButtonBasketFull/ButtonBasketFullDeliveryAddress/index";
 export * from "./ButtonStandart/index";

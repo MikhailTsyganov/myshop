@@ -3,4 +3,5 @@ export interface ButtonShowMoreProps {
   primary?: boolean;
   outlined?: boolean;
   display?: "flex";
+  onClick: () => void;
 }

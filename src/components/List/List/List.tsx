@@ -5,7 +5,7 @@ export const List = <T extends TListItem>(props: ListProps<T>) => {
   const { array, Component } = props;
   return (
     <StyledList {...props}>
-      {array?.map((item: T) => (
+      {array?.map((item: T, idx) => (
         <Component item={item} key={item.id} />
       ))}
     </StyledList>

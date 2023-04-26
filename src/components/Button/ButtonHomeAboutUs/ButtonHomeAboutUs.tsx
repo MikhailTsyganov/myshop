@@ -3,5 +3,8 @@ import { ButtonHomeAboutUsProps } from "./ButtonHomeAboutUs.props";
 import { StyledButtonHomeAboutUs } from "./ButtonHomeAboutUs.styles";
 
 export const ButtonHomeAboutUs: FC<ButtonHomeAboutUsProps> = (props) => {
-  return <StyledButtonHomeAboutUs>{props.children}</StyledButtonHomeAboutUs>;
+  const { children } = props;
+  return (
+    <StyledButtonHomeAboutUs {...props}>{children}</StyledButtonHomeAboutUs>
+  );
 };

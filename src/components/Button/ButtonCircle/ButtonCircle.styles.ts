@@ -8,4 +8,5 @@ export const StyledButtonCircle = styled(StyledButtonStandart)`
   padding: 15px;
   border-radius: 50%;
   border: none;
+  text-align: center;
 `;

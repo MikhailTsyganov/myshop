@@ -20,12 +20,10 @@ export const theme: DefaultTheme = {
     md: "(max-width: 1199px)",
     lg: "(min-width: 1200px)",
   },
-  // media: {
-  //   xs: "(max-width: 767px)",
-  //   sm: "(min-width: 768px) and (max-width: 1023px)",
-  //   md: "(min-width: 1024px) and (max-width: 1199px)",
-  //   lg: "(min-width: 1200px)",
-  // },
+  windowSize: {
+    tablet: 768,
+    desktop: 1024,
+  },
 };
 
 export const GlobalStyles = createGlobalStyle`

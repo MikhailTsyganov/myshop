@@ -20,5 +20,10 @@ declare module "styled-components" {
       md: string;
       lg: string;
     };
+
+    windowSize: {
+      tablet: number;
+      desktop: number;
+    };
   }
 }

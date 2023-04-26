@@ -5,37 +5,94 @@ import {
   WrapperSliderImages,
   WrapperSliderPagination,
 } from "./Slider.styles";
-import { ButtonCircle } from "components";
+import { ButtonCircle, ButtonSliderDots } from "components";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export const Slider: FC<SliderProps> = (props) => {
+  const { autoplay = true, autoplayTime = 5000 } = props;
+  const array = [
+    { id: 1, src: "/slider1.webp" },
+    { id: 2, src: "/slider2.webp" },
+    { id: 3, src: "/slider3.webp" },
+  ];
+
+  let interval: NodeJS.Timeout;
   const [sliderWidth, setSliderWidth] = useState(0);
-  const [offset, setOffset] = useState(1440);
-  const wrapperSliderImagesEl = useRef(null);
-  console.log(wrapperSliderImagesEl.current);
+  const [slide, setSlide] = useState(0);
+
+  const wrapperSliderImagesEl = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      // const width = wrapperSliderImagesEl.current.offsetWidth;
-    });
+    window.addEventListener("resize", calculateSliderWidth);
+    calculateSliderWidth();
+
+    return () => {
+      window.removeEventListener("resize", calculateSliderWidth); // TODO: проверить отрабатывает ли
+    };
   }, []);
 
-  const onButtonHandler = (e: React.MouseEvent) => {
-    switch (e.currentTarget.id) {
-      case "slider_button--prev":
-        setOffset((prevState) => prevState + 1440);
+  useEffect(() => {
+    if (!autoplay) return; //  TODO:  || images
+
+    interval = setInterval(() => {
+      onButtonHandler();
+    }, autoplayTime);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [, slide]);
+
+  const onStopSlider = (e: React.MouseEvent) => {
+    switch (e.type) {
+      case "mouseover":
+        clearInterval(interval);
         break;
-      case "slider_button--next":
-        setOffset((prevState) => prevState - 1440);
+      case "mouseout":
+        if (!autoplay) return;
+        interval = setInterval(() => {
+          onButtonHandler();
+        }, autoplayTime);
         break;
     }
+  };
+
+  const calculateSliderWidth = () => {
+    if (wrapperSliderImagesEl.current != null) {
+      const width = wrapperSliderImagesEl.current.offsetWidth;
+      setSliderWidth(width);
+    }
+  };
+
+  const onButtonHandler = (e?: React.MouseEvent) => {
+    switch (e?.currentTarget.id) {
+      case "slider_button--prev":
+        setSlide((prevState) =>
+          prevState === 0 ? array?.length - 1 : prevState - 1
+        );
+
+        break;
+
+      default:
+        setSlide((prevState) =>
+          prevState === array?.length - 1 ? 0 : prevState + 1
+        );
+        break;
+    }
+  };
+
+  const goToSlide = (e: React.MouseEvent) => {
+    setSlide(Number(e.currentTarget.id));
   };
 
   const baseUrl = process.env.PUBLIC_URL + `/images`;
 
   return (
     <StyledSlider {...props}>
-      <WrapperSliderImages offset={offset} ref={wrapperSliderImagesEl}>
+      <WrapperSliderImages
+        offset={sliderWidth * slide}
+        ref={wrapperSliderImagesEl}
+      >
         <ButtonCircle
           className="slider_button"
           id="slider_button--prev"
@@ -51,12 +108,30 @@ export const Slider: FC<SliderProps> = (props) => {
           <FaArrowRight />
         </ButtonCircle>
         <div className="images_container">
-          <img src={baseUrl + "/slider1.webp"} alt="1" />
-          <img src={baseUrl + "/slider2.webp"} alt="2" />
-          <img src={baseUrl + "/slider3.webp"} alt="3" />
+          {array.map(({ id, src }) => (
+            <img
+              key={id}
+              src={baseUrl + src}
+              alt={src}
+              onMouseOver={onStopSlider}
+              onMouseOut={onStopSlider}
+            />
+          ))}
         </div>
       </WrapperSliderImages>
-      <WrapperSliderPagination></WrapperSliderPagination>
+      <WrapperSliderPagination>
+        <ul>
+          {array.map(({ id }, idx) => (
+            <li key={id}>
+              <ButtonSliderDots
+                slide={slide}
+                id={`${idx}`}
+                onClick={goToSlide}
+              ></ButtonSliderDots>
+            </li>
+          ))}
+        </ul>
+      </WrapperSliderPagination>
     </StyledSlider>
   );
 };
