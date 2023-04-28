@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { goodsListApi } from "./api/goods-list-query/goods-list-query";
 import { goodsApi } from "./api/goods-query/goods-query";
 import { aboutUsApi } from "./api/about-us-query/about-us-query";
+import { sliderImagesApi } from "./api/slider-images-query/slider-images-query";
 import rootReducer from "./reducers/rootReducer";
 
 export const store = configureStore({
@@ -11,7 +12,8 @@ export const store = configureStore({
     getDefaultMiddleware().concat(
       goodsListApi.middleware,
       goodsApi.middleware,
-      aboutUsApi.middleware
+      aboutUsApi.middleware,
+      sliderImagesApi.middleware
     ),
 });
 

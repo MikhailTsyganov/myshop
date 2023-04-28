@@ -6,10 +6,7 @@ export const StyledSlider = styled.div`
   margin: 0 0 36px;
 `;
 
-export const WrapperSliderImages = styled(StyledWrapperStandart)<{
-  offset: number;
-  src?: string;
-}>`
+export const WrapperSliderImages = styled(StyledWrapperStandart)`
   position: relative;
   height: 370px;
   border-radius: 24px;
@@ -42,19 +39,22 @@ export const WrapperSliderImages = styled(StyledWrapperStandart)<{
   #slider_button--next {
     right: 28px;
   }
+`;
 
-  & > .images_container {
-    display: flex;
-    height: 100%;
-    transform: translateX(
-      ${({ offset }) => -offset}px
-    ); // перед offset стоит минус
-    transition: transform ease 1s;
+export const WrapperImagesContainer = styled(StyledWrapperStandart)<{
+  offset: number;
+  src?: string;
+}>`
+  display: flex;
+  height: 100%;
+  transform: translateX(
+    ${({ offset }) => -offset}px
+  ); // перед offset стоит минус
+  transition: transform ease 1s;
 
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
+  & img {
+    width: 100%;
+    object-fit: cover;
   }
 `;
 

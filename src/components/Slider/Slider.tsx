@@ -4,23 +4,32 @@ import {
   StyledSlider,
   WrapperSliderImages,
   WrapperSliderPagination,
+  WrapperImagesContainer,
 } from "./Slider.styles";
 import { ButtonCircle, ButtonSliderDots } from "components";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-export const Slider: FC<SliderProps> = (props) => {
-  const { autoplay = true, autoplayTime = 5000 } = props;
-  const array = [
-    { id: 1, src: "/slider1.webp" },
-    { id: 2, src: "/slider2.webp" },
-    { id: 3, src: "/slider3.webp" },
-  ];
+import { sliderImagesApi } from "redux/api/slider-images-query/slider-images-query";
 
-  let interval: NodeJS.Timeout;
+export const Slider: FC<SliderProps> = (props) => {
+  const { autoplay, autoplayTime = 5000 } = props;
+
+  // let interval: NodeJS.Timeout | undefined = undefined;
+  const [images, setImages] = useState([]);
+
   const [sliderWidth, setSliderWidth] = useState(0);
   const [slide, setSlide] = useState(0);
+  // const [isRunningSlider, setIsRunningSlider] = useState(true);
+
+  const { data, isSuccess } = sliderImagesApi.useGetSliderImagesQuery("");
 
   const wrapperSliderImagesEl = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setImages(data);
+    }
+  }, [data, isSuccess]);
 
   useEffect(() => {
     window.addEventListener("resize", calculateSliderWidth);
@@ -31,29 +40,44 @@ export const Slider: FC<SliderProps> = (props) => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!autoplay) return; //  TODO:  || images
+  const interval = useRef<NodeJS.Timeout | undefined>(undefined);
 
-    interval = setInterval(() => {
+  useEffect(() => {
+    if (!autoplay || images.length === 0) return; //  TODO:  || images
+    console.log("useEffect ДО", interval);
+
+    interval.current = setInterval(() => {
       onButtonHandler();
     }, autoplayTime);
-
+    console.log("useEffect ПОСЛЕ", interval);
     return () => {
-      clearInterval(interval);
+      clearInterval(interval.current);
     };
-  }, [, slide]);
+  }, [images.length]); /// убрал зависимость от слайда
 
   const onStopSlider = (e: React.MouseEvent) => {
+    if (!autoplay) return;
+    // console.log(interval);
+    // interval = undefined;
+    // console.log(e.currentTarget === e.target);
+    // console.log(e.currentTarget);
+    console.log(e.type);
     switch (e.type) {
-      case "mouseover":
-        clearInterval(interval);
-        break;
-      case "mouseout":
-        if (!autoplay) return;
-        interval = setInterval(() => {
+      case "mouseenter":
+        // setIsRunningSlider(false);
+        console.log("mouseenter 111111", interval);
+        clearInterval(interval.current);
+        // interval = undefined;
+        console.log("mouseenter 222222", interval);
+        return;
+      case "mouseleave":
+        // setIsRunningSlider(true);
+        console.log("LEAVE 1111111111111111", interval);
+        interval.current = setInterval(() => {
           onButtonHandler();
         }, autoplayTime);
-        break;
+        console.log("LEAVE 22222222222222222", interval);
+        return;
     }
   };
 
@@ -67,17 +91,20 @@ export const Slider: FC<SliderProps> = (props) => {
   const onButtonHandler = (e?: React.MouseEvent) => {
     switch (e?.currentTarget.id) {
       case "slider_button--prev":
+        console.log("slider_button--prev");
+
         setSlide((prevState) =>
-          prevState === 0 ? array?.length - 1 : prevState - 1
+          prevState === 0 ? images?.length - 1 : prevState - 1
         );
 
-        break;
+        return;
 
       default:
+        console.log("slider_button--next");
         setSlide((prevState) =>
-          prevState === array?.length - 1 ? 0 : prevState + 1
+          prevState === images?.length - 1 ? 0 : prevState + 1
         );
-        break;
+        return;
     }
   };
 
@@ -90,8 +117,8 @@ export const Slider: FC<SliderProps> = (props) => {
   return (
     <StyledSlider {...props}>
       <WrapperSliderImages
-        offset={sliderWidth * slide}
-        ref={wrapperSliderImagesEl}
+        onMouseEnter={onStopSlider}
+        onMouseLeave={onStopSlider}
       >
         <ButtonCircle
           className="slider_button"
@@ -107,21 +134,19 @@ export const Slider: FC<SliderProps> = (props) => {
         >
           <FaArrowRight />
         </ButtonCircle>
-        <div className="images_container">
-          {array.map(({ id, src }) => (
-            <img
-              key={id}
-              src={baseUrl + src}
-              alt={src}
-              onMouseOver={onStopSlider}
-              onMouseOut={onStopSlider}
-            />
+        <WrapperImagesContainer
+          className="images_container"
+          ref={wrapperSliderImagesEl}
+          offset={sliderWidth * slide}
+        >
+          {images.map(({ id, path }) => (
+            <img key={id} src={baseUrl + path} alt={path} />
           ))}
-        </div>
+        </WrapperImagesContainer>
       </WrapperSliderImages>
       <WrapperSliderPagination>
         <ul>
-          {array.map(({ id }, idx) => (
+          {images.map(({ id }, idx) => (
             <li key={id}>
               <ButtonSliderDots
                 slide={slide}

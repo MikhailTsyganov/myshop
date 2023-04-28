@@ -36,8 +36,7 @@ export const Homepage: FC<HomepageProps> = (props) => {
 
   return (
     <StyledHomepage {...props}>
-      <Slider />
-
+      <Slider autoplay autoplayTime={4000} />
       {/* <List display="grid" Component={GoodsItemHomepage} array={goods} /> */}
 
       <ButtonShowMore outlined display="flex" onClick={onShowMore}>
