@@ -3,6 +3,10 @@ import BASE_URL from "../baseURL";
 import { TGoodsItemHomepage } from "components";
 
 type TGetAllGoodsBody = { page: number; limit: number };
+interface getAllGoods {
+  goods: TGoodsItemHomepage[];
+  total: number;
+}
 
 export const goodsApi = createApi({
   reducerPath: "goodsApi",
@@ -10,7 +14,7 @@ export const goodsApi = createApi({
     baseUrl: BASE_URL,
   }),
   endpoints: (builder) => ({
-    getAllGoods: builder.query<TGoodsItemHomepage[], TGetAllGoodsBody>({
+    getAllGoods: builder.query<getAllGoods, TGetAllGoodsBody>({
       query: (body) => ({
         url: `/goods`,
         method: "POST",

@@ -3,4 +3,6 @@ export interface WrapperPLUGProps {
   height?: string;
   bgc?: string;
   margin?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  id?: string;
 }

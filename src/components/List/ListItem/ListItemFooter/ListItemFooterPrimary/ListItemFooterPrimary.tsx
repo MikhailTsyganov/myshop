@@ -7,7 +7,7 @@ import {
   Title2,
   WrapperStandart,
 } from "components";
-import useWindowSize from "hooks/useWindowSize";
+import { useWindowSize } from "hooks/useWindowSize";
 import { useTheme } from "styled-components";
 
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";

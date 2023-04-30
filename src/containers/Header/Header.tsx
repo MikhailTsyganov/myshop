@@ -18,9 +18,26 @@ import {
   WrapperHeader,
 } from "components";
 
+import { useNavigate } from "react-router-dom";
+
 export const Header: FC<HeaderProps> = (props) => {
   const { onOpenSidebar, view } = props;
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  const buttonHandler = (e: React.MouseEvent) => {
+    switch (e.currentTarget.id) {
+      case "logo":
+        navigate("/");
+        break;
+      case "basket":
+        navigate("/basket");
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <StyledHeader view={view}>
@@ -28,18 +45,31 @@ export const Header: FC<HeaderProps> = (props) => {
         <WrapperHeader display="flex">
           <WrapperStandart display="flex">
             <BurgerButton onOpenSidebar={onOpenSidebar} />
-            {/* react-router */}
-            <WrapperPLUG minWidth="240px" height="37px" bgc="red"></WrapperPLUG>
+            <WrapperPLUG
+              id="logo"
+              minWidth="240px"
+              height="37px"
+              bgc="red"
+              onClick={buttonHandler}
+            ></WrapperPLUG>
           </WrapperStandart>
           <WrapperHeaderPersonalButton display="flex">
-            <HeaderPersonalButton text="Войти">
+            <HeaderPersonalButton
+              id="signin"
+              text="Войти"
+              onClick={buttonHandler}
+            >
               <BsFillPersonFill fill={theme.colors.white} />
             </HeaderPersonalButton>
-            <HeaderPersonalButton text="Корзина">
+            <HeaderPersonalButton
+              id="basket"
+              text="Корзина"
+              onClick={buttonHandler}
+            >
               <BsCart4 fill={theme.colors.white} />
             </HeaderPersonalButton>
             {/* for screen < 1024px */}
-            <HeaderPersonalButton>
+            <HeaderPersonalButton id="search" onClick={buttonHandler}>
               <HiOutlineMagnifyingGlass fill="transparent" />
             </HeaderPersonalButton>
             {/*  */}
