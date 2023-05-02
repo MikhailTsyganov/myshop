@@ -3,7 +3,8 @@ import BASE_URL from "../baseURL";
 import { TGoodsItemHomepage } from "components";
 
 type TGetAllGoodsBody = { page: number; limit: number };
-interface getAllGoods {
+
+interface IGetAllGoods {
   goods: TGoodsItemHomepage[];
   total: number;
 }
@@ -13,13 +14,15 @@ export const goodsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
+  tagTypes: ["Goods"],
   endpoints: (builder) => ({
-    getAllGoods: builder.query<getAllGoods, TGetAllGoodsBody>({
+    getAllGoods: builder.mutation<IGetAllGoods, TGetAllGoodsBody>({
       query: (body) => ({
         url: `/goods`,
         method: "POST",
         body,
       }),
+      invalidatesTags: ["Goods"],
     }),
   }),
 });

@@ -38,7 +38,7 @@ export const Slider: FC<SliderProps> = (props) => {
     return () => {
       clearInterval(interval.current);
     };
-  }, [images.length]); /// убрал зависимость от слайда
+  }, [images.length]);
 
   const onStopSlider = (e: React.MouseEvent) => {
     if (!autoplay || images.length === 0) return;

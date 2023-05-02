@@ -20,22 +20,26 @@ export const Homepage: FC<HomepageProps> = (props) => {
   const [page, setPage] = useState(1);
   const [totalGoods, setTotalGoods] = useState(0);
 
-  const { device, numberOfGoodsInRequest } = useWindowSizeDevice();
-  console.log(numberOfGoodsInRequest);
+  const { numberOfGoodsInRequest } = useWindowSizeDevice();
 
-  const { data, isSuccess } = goodsApi.useGetAllGoodsQuery({
-    page,
-    limit: numberOfGoodsInRequest,
-  });
-  // const allGoods = goodsApi.useGetAllGoodsQuery({ page, limit: 6 });
+  const [getAllGoods, {}] = goodsApi.useGetAllGoodsMutation();
 
   useEffect(() => {
-    // if (status === "fulfilled" && data !== undefined) {    QUESTION
-    if (isSuccess) {
-      setGoods((prevState) => [...prevState, ...data.goods]);
-      setTotalGoods(data.total);
-    }
-  }, [data]);
+    setPage(1);
+    getAllGoods({ page: 1, limit: numberOfGoodsInRequest }).then((data) => {
+      if ("data" in data) setGoods(data.data.goods);
+    });
+  }, [numberOfGoodsInRequest]);
+
+  useEffect(() => {
+    getAllGoods({ page, limit: numberOfGoodsInRequest }).then((data) => {
+      if ("data" in data) {
+        setTotalGoods(data.data.total);
+        if (page === 1) return;
+        setGoods((prevState) => [...prevState, ...data.data.goods]);
+      }
+    });
+  }, [page]);
 
   const onShowMore = () => {
     setPage((prevState) => prevState + 1);
