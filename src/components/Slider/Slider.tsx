@@ -17,7 +17,7 @@ export const Slider: FC<SliderProps> = (props) => {
 
   const [images, setImages] = useState([]);
   const [slide, setSlide] = useState(0);
-  const [sliderWidth, refEl] = useRefWidthWindowResize();
+  const { elementWidth, refElement } = useRefWidthWindowResize();
 
   const { data, isSuccess } = sliderImagesApi.useGetSliderImagesQuery("");
 
@@ -76,8 +76,6 @@ export const Slider: FC<SliderProps> = (props) => {
     setSlide(Number(e.currentTarget.id));
   };
 
-  const baseUrl = process.env.PUBLIC_URL + `/images`;
-
   return (
     <StyledSlider {...props}>
       <WrapperSliderImages
@@ -100,11 +98,11 @@ export const Slider: FC<SliderProps> = (props) => {
         </ButtonCircle>
         <WrapperImagesContainer
           className="images_container"
-          ref={refEl}
-          offset={Number(sliderWidth) * slide}
+          ref={refElement}
+          offset={Number(elementWidth) * slide}
         >
           {images.map(({ id, path }) => (
-            <img key={id} src={baseUrl + path} alt={path} />
+            <img key={id} src={path} alt={path} />
           ))}
         </WrapperImagesContainer>
       </WrapperSliderImages>

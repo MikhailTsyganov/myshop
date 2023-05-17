@@ -1,19 +1,23 @@
 import { FC } from "react";
 import { GoodsItemHomepageProps } from ".";
 import { StyledGoodsItemHomepage } from "./GoodsItemHomepage.styles";
+import { Title2, ParagraphStandart } from "components";
+import { Link } from "react-router-dom";
 
 export const GoodsItemHomepage: FC<GoodsItemHomepageProps> = ({ item }) => {
-  const { name, img, price } = item;
+  const { article, brand, name, previewImage, price } = item;
 
   return (
-    <StyledGoodsItemHomepage>
-      <img
-        width="100%"
-        src={process.env.PUBLIC_URL + `/images${img}`}
-        alt={name}
-      />
-      <p>{price}</p>
-      <h3>{name}</h3>
-    </StyledGoodsItemHomepage>
+    <Link to={`/goods/${article}`}>
+      <StyledGoodsItemHomepage>
+        <article>
+          <img width="100%" src={previewImage} alt={name} />
+          <ParagraphStandart>{price} ₽</ParagraphStandart>
+          <Title2>
+            <span>{brand}</span> / {name}
+          </Title2>
+        </article>
+      </StyledGoodsItemHomepage>
+    </Link>
   );
 };

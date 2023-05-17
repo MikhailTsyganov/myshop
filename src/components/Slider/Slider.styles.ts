@@ -44,7 +44,7 @@ export const WrapperSliderImages = styled(StyledWrapperStandart)`
 export const WrapperImagesContainer = styled(StyledWrapperStandart)<{
   offset: number;
   src?: string;
-  ref: any;
+  // ref?: React.MutableRefObject<HTMLDivElement | null> | undefined;
 }>`
   display: flex;
   height: 100%;

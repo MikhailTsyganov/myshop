@@ -1,12 +1,11 @@
 export type TGoodsItemHomepage = {
-  id: string;
+  article: number;
+  brand: string;
+  idGeneral: string;
   name: string;
-  listSubGood_id: string | null;
+  previewImage: string;
   price: number;
-  img: string;
-  color: string;
-  location: string;
-  quantity: number;
+  id: string;
 };
 
 export interface GoodsItemHomepageProps {

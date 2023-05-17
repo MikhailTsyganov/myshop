@@ -34,32 +34,7 @@ import { List } from "components/List/List";
 // ];
 
 export const FullBasket: FC<FullBasketProps> = (props) => {
-  const requestHandler = () => {
-    fetch("http://localhost:5000/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: "myusername1",
-        email: "myemail@example1.com",
-        password: "mypasswor1d",
-      }),
-    })
-      // fetch("http://localhost:3306/", {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-
-      // })
-      .then((response) => response.json())
-      .then((data) => {
-        // сохраняем полученный токен в localStorage или в cookies
-        // localStorage.setItem("token", data.token);
-        console.log("register", data);
-      });
-  };
+  const requestHandler = () => {};
 
   return (
     <StyledFullBasket {...props}>

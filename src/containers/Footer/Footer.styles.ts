@@ -34,7 +34,7 @@ export const StyledFooter = styled.footer<{ view?: "basket" }>`
 export const WrapperFooter = styled(StyledWrapperStandart)`
   display: flex;
   align-items: start;
-  cursor: pointer;
+  /* cursor: pointer; */
 
   @media ${({ theme }) => theme.media.sm} {
     display: block;

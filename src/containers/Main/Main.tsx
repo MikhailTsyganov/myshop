@@ -4,9 +4,12 @@ import { MainProps } from ".";
 import { StyledMain } from "./Main.styles";
 import { Container } from "components";
 import { Basket } from "./Basket/index";
+import { Login } from "containers/AuthForm/Login";
+import { Registration } from "containers/AuthForm/Registration";
 import { Homepage } from "./Homepage/index";
+import { ItemDetail } from "./ItemDetail";
 
-import { Route, Routes, Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 export const Main: FC<MainProps> = (props) => {
   return (
@@ -14,19 +17,12 @@ export const Main: FC<MainProps> = (props) => {
       <Container>
         <Routes>
           <Route path="/" element={<Homepage />}></Route>
+          <Route path="/goods/:article" element={<ItemDetail />}></Route>
           <Route path="/basket" element={<Basket />}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/registration" element={<Registration />}></Route>
         </Routes>
       </Container>
     </StyledMain>
   );
 };
-
-// You should be using react router, then you'll be able to redirect the root path to where you want:
-// <Redirect from='/' to='/api' />
-// Or, if you want the sub-path without redirection, you can use basename like:
-// <Router basename={'/api'}>
-//   <Route path="/" component={Api} />
-// </Router
-// Now, when you start the project, it will serve from your_domain:port/api
-// If you don't use react router, then you may set homepage in package.json like:
-// "homepage": "/api"

@@ -1,24 +1,25 @@
-import { createGlobalStyle } from "styled-components";
-import { DefaultTheme } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: "#cb11ab",
-    secondary: "#481173",
-    semitransparent: "rgba(255, 255, 255, 0.5)",
-    white: "#fff",
-    black: "#000",
-    searchBackground: "rgba(255, 255, 255, 0.2)",
-    grey: "#868695",
-    backdrop: "rgba(0, 0, 0, 0.5)",
-    bgcCounter: "#f1f1f5",
-    bgcBasket: "#f6f6f9",
+    primary: '#cb11ab',
+    secondary: '#481173',
+    semitransparent: 'rgba(255, 255, 255, 0.5)',
+    white: '#fff',
+    black: '#000',
+    searchBackground: 'rgba(255, 255, 255, 0.2)',
+    grey: '#868695',
+    backdrop: 'rgba(0, 0, 0, 0.5)',
+    bgcCounter: '#f1f1f5',
+    bgcBasket: '#f6f6f9',
   },
   media: {
-    xs: "(max-width: 767px)",
-    sm: "(max-width: 1023px)",
-    md: "(max-width: 1199px)",
-    lg: "(min-width: 1200px)",
+    xxs: '(max-width: 575px)',
+    xs: '(max-width: 767px)',
+    sm: '(max-width: 1023px)',
+    md: '(max-width: 1199px)',
+    lg: '(min-width: 1200px)',
   },
   windowSize: {
     tablet: 768,
@@ -58,4 +59,11 @@ export const GlobalStyles = createGlobalStyle`
   
   li {
     list-style: none;
-  }`;
+  }
+  
+  a {
+    text-decoration: none; 
+    color: #000;
+  }
+  
+  `;

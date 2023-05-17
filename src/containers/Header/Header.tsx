@@ -30,6 +30,9 @@ export const Header: FC<HeaderProps> = (props) => {
       case "logo":
         navigate("/");
         break;
+      case "auth":
+        navigate("/login");
+        break;
       case "basket":
         navigate("/basket");
         break;
@@ -55,7 +58,7 @@ export const Header: FC<HeaderProps> = (props) => {
           </WrapperStandart>
           <WrapperHeaderPersonalButton display="flex">
             <HeaderPersonalButton
-              id="signin"
+              id="auth"
               text="Войти"
               onClick={buttonHandler}
             >

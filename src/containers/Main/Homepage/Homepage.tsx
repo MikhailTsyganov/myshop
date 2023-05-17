@@ -25,6 +25,14 @@ export const Homepage: FC<HomepageProps> = (props) => {
   const [getAllGoods, {}] = goodsApi.useGetAllGoodsMutation();
 
   useEffect(() => {
+    getAllGoods({ page, limit: numberOfGoodsInRequest }).then((data) => {
+      if ("data" in data) {
+        setTotalGoods(data.data.total);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     setPage(1);
     getAllGoods({ page: 1, limit: numberOfGoodsInRequest }).then((data) => {
       if ("data" in data) setGoods(data.data.goods);
@@ -34,7 +42,6 @@ export const Homepage: FC<HomepageProps> = (props) => {
   useEffect(() => {
     getAllGoods({ page, limit: numberOfGoodsInRequest }).then((data) => {
       if ("data" in data) {
-        setTotalGoods(data.data.total);
         if (page === 1) return;
         setGoods((prevState) => [...prevState, ...data.data.goods]);
       }
@@ -44,6 +51,8 @@ export const Homepage: FC<HomepageProps> = (props) => {
   const onShowMore = () => {
     setPage((prevState) => prevState + 1);
   };
+
+  console.log(goods);
 
   return (
     <StyledHomepage {...props}>
