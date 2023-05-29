@@ -19,11 +19,15 @@ export const StyledHeader = styled.header<{ view?: "basket" }>`
     height: 36px;
     border-radius: 24px 24px 0 0;
 
+    @media ${({ theme }) => theme.media.sm} {
+      display: none;
+    }
+
     ${({ view, theme }) => {
       switch (view) {
         case "basket":
           return css`
-            background-color: ${theme.colors.bgcBasket};
+            background-color: ${theme.colors.greyContainerBackground};
           `;
 
         default:
@@ -35,7 +39,7 @@ export const StyledHeader = styled.header<{ view?: "basket" }>`
   }
 
   @media ${({ theme }) => theme.media.sm} {
-    padding: 10px 0 25px;
+    padding: 10px 0 0;
   }
 `;
 

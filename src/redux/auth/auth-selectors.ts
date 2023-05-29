@@ -1,2 +1,4 @@
-// export const getIsLoggedIn = (state: any): any => state.auth.isLoggedIn;
-export {};
+import { RootState } from "../store";
+
+export const getIsLoggedIn = (state: RootState): boolean =>
+  state.auth.isLoggedIn;

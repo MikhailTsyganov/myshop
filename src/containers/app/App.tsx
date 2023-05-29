@@ -4,27 +4,17 @@ import { Backdrop } from "components";
 import { Header, Main, Footer, Sidebar, MobileNavMenu } from "containers";
 
 import { refresh } from "redux/auth/auth-operations";
-import { goodsListApi } from "redux/api/goods-list-query/goods-list-query";
-import { useAppDispatch } from "redux/hooks/hooks";
+import { goodsListApi } from "redux/api/goodsList/goodsList.api";
+import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
+import { useLocation, Outlet } from "react-router-dom";
+import { sidebarToggle } from "redux/selectors/selectors";
 
 function App() {
-  const [isOpenedSidebar, setIsOpenedSidebar] = useState(false);
-  const [showBackdrop, setShowBackdrop] = useState(false);
-
-  const [goodsList, setGoodsList] = useState([]);
-
   const dispatch = useAppDispatch();
 
-  const onToggleSidebar = () => {
-    setIsOpenedSidebar((prevState) => !prevState);
-    setShowBackdrop((prevState) => !prevState);
-  };
+  const { data: goodsList } = goodsListApi.useGetGoodsListQuery("");
 
-  const goodsListQuery = goodsListApi.useGetGoodsListQuery("");
-
-  useEffect(() => {
-    setGoodsList(goodsListQuery.data);
-  }, [goodsListQuery.data]);
+  const showSidebar = useAppSelector(sidebarToggle);
 
   useEffect(() => {
     dispatch(refresh());
@@ -32,26 +22,10 @@ function App() {
 
   return (
     <>
-      <Header
-        // view="basket"
-        onOpenSidebar={onToggleSidebar}
-      />
-      <Main
-      // view="basket"
-      />
-      <Footer
-      // view="basket"
-      />
+      <Outlet />
 
-      {true && <MobileNavMenu />}
-
-      {showBackdrop && (
-        <Backdrop onCloseSidebar={onToggleSidebar}>
-          {isOpenedSidebar && (
-            <Sidebar goodsList={goodsList} onCloseSidebar={onToggleSidebar} />
-          )}
-        </Backdrop>
-      )}
+      <MobileNavMenu />
+      {showSidebar && <Sidebar goodsList={goodsList} />}
     </>
   );
 }

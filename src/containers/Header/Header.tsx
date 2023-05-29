@@ -19,11 +19,21 @@ import {
 } from "components";
 
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "redux/hooks/hooks";
+import { getIsLoggedIn } from "redux/auth/auth-selectors";
+import { sidebarSlice } from "redux/reducers/sidebar-reducer/sidebar-reducer";
 
 export const Header: FC<HeaderProps> = (props) => {
-  const { onOpenSidebar, view } = props;
+  const {
+    // onOpenSidebar,
+    view,
+  } = props;
+
   const theme = useTheme();
   const navigate = useNavigate();
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const dispatch = useAppDispatch();
+  const { sidebarToggle } = sidebarSlice.actions;
 
   const buttonHandler = (e: React.MouseEvent) => {
     switch (e.currentTarget.id) {
@@ -42,12 +52,16 @@ export const Header: FC<HeaderProps> = (props) => {
     }
   };
 
+  const onClickBurgerButton = () => {
+    dispatch(sidebarToggle());
+  };
+
   return (
     <StyledHeader view={view}>
       <Container>
         <WrapperHeader display="flex">
           <WrapperStandart display="flex">
-            <BurgerButton onOpenSidebar={onOpenSidebar} />
+            <BurgerButton onClick={onClickBurgerButton} />
             <WrapperPLUG
               id="logo"
               minWidth="240px"
@@ -58,8 +72,8 @@ export const Header: FC<HeaderProps> = (props) => {
           </WrapperStandart>
           <WrapperHeaderPersonalButton display="flex">
             <HeaderPersonalButton
-              id="auth"
-              text="Войти"
+              id={`${isLoggedIn ? "profile" : "auth"}`}
+              text={`${isLoggedIn ? "Профиль" : "Войти"}`}
               onClick={buttonHandler}
             >
               <BsFillPersonFill fill={theme.colors.white} />

@@ -1,4 +1,4 @@
 export interface BackdropProps {
-  onCloseSidebar: () => void;
   children: React.ReactNode;
+  onClick: (e: React.MouseEvent) => void;
 }

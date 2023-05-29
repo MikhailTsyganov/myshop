@@ -16,8 +16,4 @@ export const StyledHomeAboutUs = styled.section`
   p:not(last-child) {
     margin-bottom: 20px;
   }
-
-  @media ${({ theme }) => theme.media.sm} {
-    display: none;
-  }
 `;

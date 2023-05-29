@@ -23,7 +23,9 @@ export function useWindowSize() {
 
   return windowSize;
 }
-export function useWindowSizeDevice() {
+export function useWindowSizeDevice(
+  setPage: React.Dispatch<React.SetStateAction<number>> | null = null
+) {
   const [device, setDevice] = useState("");
   const [numberOfGoodsInRequest, setNumberOfGoodsInRequest] = useState(0);
 
@@ -33,7 +35,7 @@ export function useWindowSizeDevice() {
   useEffect(() => {
     if (width > theme.windowSize.desktop && device !== "desktop") {
       setDevice("desktop");
-      setNumberOfGoodsInRequest(6);
+      setNumberOfGoodsInRequest(1);
     }
     if (
       width < theme.windowSize.desktop &&
@@ -41,13 +43,17 @@ export function useWindowSizeDevice() {
       device !== "tablet"
     ) {
       setDevice("tablet");
-      setNumberOfGoodsInRequest(4);
+      setNumberOfGoodsInRequest(2);
     }
     if (width < theme.windowSize.tablet && device !== "mobile") {
       setDevice("mobile");
-      setNumberOfGoodsInRequest(2);
+      setNumberOfGoodsInRequest(1);
     }
   }, [width]);
+
+  useEffect(() => {
+    setPage && setPage(1);
+  }, [device]);
 
   return { device, numberOfGoodsInRequest };
 }

@@ -10,7 +10,7 @@ import { ButtonCircle, ButtonSliderDots } from "components";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useRefWidthWindowResize } from "hooks/useRefWidthWindowResize";
 
-import { sliderImagesApi } from "redux/api/slider-images-query/slider-images-query";
+import { sliderImagesApi } from "redux/api/sliderImages/sliderImages.api";
 
 export const Slider: FC<SliderProps> = (props) => {
   const { autoplay, autoplayTime = 5000 } = props;

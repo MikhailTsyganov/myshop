@@ -1,3 +1,3 @@
 export interface ButtonBurgerProps {
-  onOpenSidebar: () => void;
+  onClick: () => void;
 }

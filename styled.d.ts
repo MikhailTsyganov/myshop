@@ -10,6 +10,7 @@ declare module "styled-components" {
       black: string;
       searchBackground: string;
       grey: string;
+      lightGrey: string;
       backdrop: string;
       bgcCounter: string;
     };

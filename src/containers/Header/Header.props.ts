@@ -1,4 +1,4 @@
 export interface HeaderProps {
-  onOpenSidebar: () => void;
+  // onOpenSidebar: () => void;
   view?: "basket";
 }

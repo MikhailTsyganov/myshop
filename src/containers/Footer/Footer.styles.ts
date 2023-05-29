@@ -19,7 +19,7 @@ export const StyledFooter = styled.footer<{ view?: "basket" }>`
       switch (view) {
         case "basket":
           return css`
-            background-color: ${theme.colors.bgcBasket};
+            background-color: ${theme.colors.greyContainerBackground};
           `;
 
         default:

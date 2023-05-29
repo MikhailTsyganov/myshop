@@ -6,5 +6,6 @@ export interface ButtonStandartProps {
   alignItems?: "start" | "center" | "end";
   justify?: "start" | "center" | "end";
   type?: "submit";
+  disabled?: boolean;
   // isDisabled?: boolean;
 }

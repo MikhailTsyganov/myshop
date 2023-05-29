@@ -1,4 +1,5 @@
 export interface WrapperStandartProps {
+  id?: string;
   display?: "flex";
   children?: React.ReactNode[] | React.ReactNode;
   justify?: "start" | "center" | "end" | "space-between" | "space-around";

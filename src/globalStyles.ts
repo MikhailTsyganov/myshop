@@ -1,25 +1,28 @@
-import { createGlobalStyle } from 'styled-components';
-import { DefaultTheme } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
+import { DefaultTheme } from "styled-components";
+
+// NOTE: Добавил свойство? Обнови styled.d.ts
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: '#cb11ab',
-    secondary: '#481173',
-    semitransparent: 'rgba(255, 255, 255, 0.5)',
-    white: '#fff',
-    black: '#000',
-    searchBackground: 'rgba(255, 255, 255, 0.2)',
-    grey: '#868695',
-    backdrop: 'rgba(0, 0, 0, 0.5)',
-    bgcCounter: '#f1f1f5',
-    bgcBasket: '#f6f6f9',
+    primary: "#cb11ab",
+    secondary: "#481173",
+    semitransparent: "rgba(255, 255, 255, 0.5)",
+    white: "#fff",
+    black: "#000",
+    searchBackground: "rgba(255, 255, 255, 0.2)",
+    grey: "#868695",
+    lightGrey: "#e8e8f0",
+    backdrop: "rgba(0, 0, 0, 0.5)",
+    bgcCounter: "#f1f1f5",
+    greyContainerBackground: "#f6f6f9",
   },
   media: {
-    xxs: '(max-width: 575px)',
-    xs: '(max-width: 767px)',
-    sm: '(max-width: 1023px)',
-    md: '(max-width: 1199px)',
-    lg: '(min-width: 1200px)',
+    xxs: "(max-width: 575px)",
+    xs: "(max-width: 767px)",
+    sm: "(max-width: 1023px)",
+    md: "(max-width: 1199px)",
+    lg: "(min-width: 1200px)",
   },
   windowSize: {
     tablet: 768,
