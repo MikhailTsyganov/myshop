@@ -14,4 +14,6 @@ export interface WrapperStandartProps {
   flexDirection?: "row" | "column";
   bgc?: string; // TODO: delete
   flexWrap?: "wrap" | "no-wrap";
+  className?: string;
+  // style?: React.CSSProperties;
 }

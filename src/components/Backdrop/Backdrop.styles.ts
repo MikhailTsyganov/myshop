@@ -7,4 +7,5 @@ export const StyledBackdrop = styled.div`
   height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.colors.backdrop};
+  z-index: 9999999999999;
 `;

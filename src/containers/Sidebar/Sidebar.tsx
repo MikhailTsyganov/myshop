@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { SidebarProps } from ".";
 
 import { List, ButtonClose, ListItemSidebar, Backdrop } from "components";
@@ -9,6 +9,7 @@ import { sidebarSlice } from "redux/reducers/sidebar-reducer/sidebar-reducer";
 export const Sidebar: FC<SidebarProps> = ({ goodsList }) => {
   const dispatch = useAppDispatch();
   const { sidebarToggle } = sidebarSlice.actions;
+  const [showSublist, setShowSublist] = useState(false);
 
   const onCloseSidebar = () => {
     dispatch(sidebarToggle());
@@ -21,7 +22,18 @@ export const Sidebar: FC<SidebarProps> = ({ goodsList }) => {
   return (
     <Backdrop onClick={onBackdropClick}>
       <WrapperSidebar>
-        <List Component={ListItemSidebar} array={goodsList}></List>
+        {goodsList && (
+          <ul>
+            {goodsList.map((listItem) => (
+              <ListItemSidebar
+                key={listItem.id}
+                item={listItem}
+              ></ListItemSidebar>
+            ))}
+          </ul>
+        )}
+        {/* <List Component={ListItemSidebar} array={goodsList}></List> */}
+        {showSublist && <div></div>}
         <ButtonClose onCloseSidebar={onCloseSidebar}></ButtonClose>
       </WrapperSidebar>
     </Backdrop>

@@ -14,8 +14,8 @@ export const goodsApi = commonApi.injectEndpoints({
         // return { endpointName, queryArgs };
       },
       // Always merge incoming data to the cache entry
-      merge: (currentCache, newItems) => {
-        currentCache.goods.push(...newItems.goods);
+      merge: (prevCache, newCache) => {
+        prevCache.goods.push(...newCache.goods);
       },
       // Refetch when the page arg changes
 

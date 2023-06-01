@@ -9,6 +9,26 @@ export const StyledItemDetail = styled(StyledWrapperStandart)<ItemDetailProps>`
     font-weight: 400;
     margin-top: 2px;
   }
+
+  & .goodDetailWrapperAddGood {
+    display: none;
+    position: sticky;
+    bottom: 51px;
+    padding: 16px 0;
+    background-color: ${({ theme }) => theme.colors.white};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.lightGrey};
+  }
+
+  & .goodDetailButtonAddGood {
+    width: 100%;
+    height: 36px;
+  }
+
+  @media ${({ theme }) => theme.media.sm} {
+    & .goodDetailWrapperAddGood {
+      display: block;
+    }
+  }
 `;
 
 export const WrapperGoodDetailsGreyBorder = styled.div`

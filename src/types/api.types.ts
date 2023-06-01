@@ -26,8 +26,8 @@ export interface IGoodsDetailsImage {
   size: string;
 }
 
-interface IGoodDetailsMainInfo {
-  id: number;
+export interface IGoodDetailsMainInfo {
+  id: string;
   sold: number;
   price: number;
   name: string;
@@ -37,7 +37,7 @@ interface IGoodDetailsMainInfo {
   variantName: string;
 }
 
-interface IGoodDetailsVariants {
+export interface IGoodDetailsVariants {
   article: string;
   imageId: string;
   path: string;

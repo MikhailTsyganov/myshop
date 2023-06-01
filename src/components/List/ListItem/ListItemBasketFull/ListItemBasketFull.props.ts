@@ -1,13 +1,5 @@
-export type TListItemBasketFull = {
-  id: number;
-  name: string;
-  price: number;
-  img: string;
-  color: string[];
-  location: string;
-  quantity: number;
-};
+import { ISelectedGoods } from "redux/reducers/selectedGoods-reducer/selectedGoods-reducer";
 
 export interface ListItemBasketFullProps {
-  item: TListItemBasketFull;
+  item: ISelectedGoods;
 }

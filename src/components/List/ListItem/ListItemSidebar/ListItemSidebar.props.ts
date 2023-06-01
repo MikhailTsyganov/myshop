@@ -6,4 +6,6 @@ export type TListItemSidebar = {
 
 export interface ListItemSidebarProps {
   item: TListItemSidebar;
+  // onMouseEnter?: (e: React.MouseEvent<HTMLLIElement>) => void;
+  // isHoverListItem: (id: string) => void;
 }

@@ -34,14 +34,17 @@ import { List } from "components/List/List";
 // ];
 
 export const FullBasket: FC<FullBasketProps> = (props) => {
-  const requestHandler = () => {};
+  const { selectedGoods } = props;
+  console.log(selectedGoods);
+
+  const buttonOrderHandler = () => {};
 
   return (
     <StyledFullBasket {...props}>
       <WrapperStandart>
         <WrapperBasketFull>
           <Title1>Корзина</Title1>
-          {/* <List Component={ListItemBasketFull} array={selectedGoods} /> */}
+          <List Component={ListItemBasketFull} array={selectedGoods} />
         </WrapperBasketFull>
         <WrapperBasketFull className="WrapperBasketFullAddress">
           <Title2>Способ доставки</Title2>
@@ -77,7 +80,7 @@ export const FullBasket: FC<FullBasketProps> = (props) => {
           <ParagraphFullBasket big>Итого</ParagraphFullBasket>
           <ParagraphFullBasket big>Типа 0</ParagraphFullBasket>
         </WrapperStandart>
-        <ButtonBasketFullOrder primary onClick={requestHandler}>
+        <ButtonBasketFullOrder primary onClick={buttonOrderHandler}>
           Заказать
         </ButtonBasketFullOrder>
       </WrapperBasketFull>

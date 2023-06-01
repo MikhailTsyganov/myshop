@@ -7,5 +7,8 @@ export interface ButtonStandartProps {
   justify?: "start" | "center" | "end";
   type?: "submit";
   disabled?: boolean;
+  className?: string;
+  onClick?: () => void;
+  // style?: React.CSSProperties;
   // isDisabled?: boolean;
 }

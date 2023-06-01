@@ -14,6 +14,13 @@ export const commonApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Goods", "goodsList", "aboutUs", "sliderImages", "GoodDetails"],
+  tagTypes: [
+    "Goods",
+    "goodsList",
+    "goodsSubList",
+    "aboutUs",
+    "sliderImages",
+    "GoodDetails",
+  ],
   endpoints: (_) => ({}),
 });

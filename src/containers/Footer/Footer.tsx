@@ -67,6 +67,7 @@ const footerArray = [
 ];
 
 export const Footer: FC<FooterProps> = (props) => {
+  const { children } = props;
   return (
     <StyledFooter {...props}>
       <Container>
@@ -79,6 +80,7 @@ export const Footer: FC<FooterProps> = (props) => {
           <ListItemFooterPrimary item={footerArray[3]} narrow />
           <ListItemFooterPrimary item={footerArray[4]} narrow />
           <ListItemFooterPrimary item={footerArray[5]} app />
+          {children && children}
         </WrapperFooter>
       </Container>
     </StyledFooter>

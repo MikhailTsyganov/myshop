@@ -5,13 +5,13 @@ import { StyledCounter } from "./Counter.styles";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 export const Counter: FC<CounterProps> = (props) => {
-  const { getCounterValue } = props;
+  const { getCounterValue, count } = props;
 
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(count);
 
   useEffect(() => {
     getCounterValue(value);
-  }, [value, getCounterValue]);
+  }, [value]);
 
   const onCounterHandler = (e: React.MouseEvent) => {
     switch (e.currentTarget.id) {

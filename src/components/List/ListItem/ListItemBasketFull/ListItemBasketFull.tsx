@@ -4,33 +4,39 @@ import { StyledListItemBasketFull } from "./ListItemBasketFull.styles";
 
 import { Counter } from "components";
 import { ParagraphFullBasket } from "components/Paragraph/ParagraphFullBasket";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { selectedGoodsSlice } from "redux/reducers/selectedGoods-reducer/selectedGoods-reducer";
 
 export const ListItemBasketFull: FC<ListItemBasketFullProps> = ({ item }) => {
-  const { id, name, price, img, color, location, quantity } = item;
+  const { info, article, amount } = item;
+  const { image, mainInfo } = info;
 
-  const [counterValue, setCounterValue] = useState(1);
+  const [counterValue, setCounterValue] = useState<number>(amount);
+
+  const { updateOnlyGoodAmount } = selectedGoodsSlice.actions;
+
+  const dispatch = useAppDispatch();
+  dispatch(updateOnlyGoodAmount({ article, amount: counterValue }));
 
   const getCounterValue = (value: number) => {
     setCounterValue(value);
   };
+  console.log(counterValue);
 
   return (
     <StyledListItemBasketFull>
-      <img src={img} alt={name} width={96} height={128} />
+      <img src={image[0].path} alt={mainInfo.name} width={96} height={128} />
       <div className="listItemBasketFull_info">
-        <ParagraphFullBasket>{name}</ParagraphFullBasket>
-        <ParagraphFullBasket grey>
-          {color.map((colorItem) => (
-            <React.Fragment key={colorItem}>{colorItem}</React.Fragment>
-          ))}
-        </ParagraphFullBasket>
-        <ParagraphFullBasket grey>{location}</ParagraphFullBasket>
+        <ParagraphFullBasket>{mainInfo.name}</ParagraphFullBasket>
+        <ParagraphFullBasket grey>{mainInfo.variantName}</ParagraphFullBasket>
+        {/* здесь должен быть location */}
+        {/* <ParagraphFullBasket grey>{mainInfo.variantName}</ParagraphFullBasket> */}
       </div>
       <div className="listItemBasketFull_counter">
-        <Counter getCounterValue={getCounterValue} />
+        <Counter getCounterValue={getCounterValue} count={amount} />
       </div>
       <ParagraphFullBasket className="listItemBasketFull_price">
-        {price * counterValue} ₽
+        {mainInfo.price * counterValue} ₽
       </ParagraphFullBasket>
     </StyledListItemBasketFull>
   );

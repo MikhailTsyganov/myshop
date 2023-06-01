@@ -13,18 +13,26 @@ import { useParams } from "react-router-dom";
 import { goodDetailsApi } from "redux/api/goodDetails/goodDetails.api";
 import { useWindowSizeDevice } from "hooks";
 import {
+  ButtonStandart,
+  Container,
   GoodDetailsSlider,
   OpeningText,
   StarsRating,
   Table,
   Title1,
   Title2,
+  WrapperStandart,
 } from "components";
 
 import { Header, Main, Footer } from "containers";
+import { useAppDispatch } from "redux/hooks/hooks";
+import { selectedGoodsSlice } from "redux/reducers/selectedGoods-reducer/selectedGoods-reducer";
 
 export const ItemDetail: FC<ItemDetailProps> = (props) => {
   const fetchBigImages = useRef<boolean>(false);
+
+  const dispatch = useAppDispatch();
+  const { addGood } = selectedGoodsSlice.actions;
 
   const { article } = useParams();
 
@@ -47,12 +55,28 @@ export const ItemDetail: FC<ItemDetailProps> = (props) => {
   useEffect(() => {
     getGoodDetails({ article, fetchBigImages: fetchBigImages.current });
   }, []);
+  console.log(typeof data?.mainInfo.id); // XXDDDDDDDDDD
+
+  const buttonAddGoodHandler = () => {
+    if (article && data) {
+      dispatch(
+        addGood({
+          id: data.mainInfo.id,
+          article,
+          info: {
+            mainInfo: data.mainInfo,
+            image: data.smallImages,
+          },
+        })
+      );
+    }
+  };
 
   return data ? (
     <>
-      <Header />
-      <Main>
-        <StyledItemDetail {...props}>
+      <StyledItemDetail {...props}>
+        <Header />
+        <Main>
           <section>
             <GoodDetailsSlider slides={data.mediumImages} />
             <ParagraphGoodPrice>{data.mainInfo.price} ₽</ParagraphGoodPrice>
@@ -106,9 +130,21 @@ export const ItemDetail: FC<ItemDetailProps> = (props) => {
               </WrapperGoodDetailsDescription>
             </WrapperGoodDetailsGreyBorder>
           </section>
-        </StyledItemDetail>
-      </Main>
-      <Footer />
+        </Main>
+        <Footer />
+
+        <WrapperStandart className="goodDetailWrapperAddGood">
+          <Container>
+            <ButtonStandart
+              primary
+              className="goodDetailButtonAddGood"
+              onClick={buttonAddGoodHandler}
+            >
+              В корзину
+            </ButtonStandart>{" "}
+          </Container>
+        </WrapperStandart>
+      </StyledItemDetail>
     </>
   ) : (
     <div>Не удалось получить данные с сервера, повторите попытку</div>
