@@ -45,6 +45,7 @@ export const StyledOpeningText = styled.div<{
     `}
 `;
 
+// TODO: Вынести в отдельный компонент
 export const ShowButton = styled.button<{ colorizedButton?: boolean }>`
   padding: 0;
   border: none;

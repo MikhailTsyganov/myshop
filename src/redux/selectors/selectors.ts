@@ -6,3 +6,8 @@ export const sidebarToggle = (state: RootState): boolean =>
 
 export const selectedGoods = (state: RootState): selectedGoodsInitialState =>
   state.selectedGoods;
+
+// auth
+
+export const getIsLoggedIn = (state: RootState): boolean =>
+  state.auth.isLoggedIn;

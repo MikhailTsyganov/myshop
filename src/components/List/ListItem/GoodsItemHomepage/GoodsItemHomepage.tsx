@@ -8,7 +8,7 @@ export const GoodsItemHomepage: FC<GoodsItemHomepageProps> = ({ item }) => {
   const { article, brand, name, previewImage, price } = item;
 
   return (
-    <Link to={`/goods/${article}`}>
+    <Link to={`/goodDetails/${article}`}>
       <StyledGoodsItemHomepage>
         <article>
           <img width="100%" src={previewImage} alt={name} />

@@ -1,24 +1,35 @@
 import { FC } from "react";
 import { ListItemSidebarProps } from ".";
 import { StyledListItemSidebar } from "./ListItemSidebar.styles";
-import { goodsListApi } from "redux/api/goodsList/goodsList.api";
+import { useNavigate } from "react-router-dom";
 
 export const ListItemSidebar: FC<ListItemSidebarProps> = (props) => {
-  const { item } = props;
-  const { name } = item;
+  const { item, onMouseEnter } = props;
+  const { name, id, path, parentPath = "" } = item;
 
-  const [getSubGoodsList, { data }] =
-    goodsListApi.useLazyGetSubGoodsListQuery();
+  const navigate = useNavigate();
 
-  const onHoverListItem = (e: React.MouseEvent<HTMLLIElement>) => {
-    getSubGoodsList({ id: item.id });
+  const onClickHandler = () => {
+    navigate(`/goods${parentPath}${path}`);
   };
 
-  console.log(data);
+  const onMouseEnterInside = (e: React.MouseEvent<HTMLLIElement>) => {
+    if (onMouseEnter) {
+      // e.currentTarget.classList.add("selectedListItemSidebar");
+      onMouseEnter(id, e);
+    }
+  };
 
   return (
-    <StyledListItemSidebar {...props} onMouseEnter={onHoverListItem}>
-      {name}
-    </StyledListItemSidebar>
+    <>
+      {console.log("ListItemSidebar")}
+      <StyledListItemSidebar
+        {...props}
+        onMouseEnter={onMouseEnterInside}
+        onClick={onClickHandler}
+      >
+        <span>{name}</span>
+      </StyledListItemSidebar>
+    </>
   );
 };

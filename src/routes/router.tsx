@@ -2,34 +2,49 @@ import { createBrowserRouter } from "react-router-dom";
 import { Basket } from "pages/Basket";
 import { Homepage } from "pages/Homepage";
 import { ItemDetail } from "pages/ItemDetail";
-import { AuthForm } from "pages/AuthForm";
 import { Login } from "pages/AuthForm/Login";
 import { Registration } from "pages/AuthForm/Registration";
 import App from "containers/app/App";
+import { GoodsByCategory } from "pages/GoodsByCategory";
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 const router = createBrowserRouter([
   {
-    path: "*",
+    path: "/",
     element: <App />,
     children: [
-      { path: "/*", element: <Homepage /> },
-      { path: "basket", element: <Basket /> },
-      { path: "goods/:article", element: <ItemDetail /> },
       {
-        path: "registration",
-        element: (
-          <AuthForm>
-            <Registration />
-          </AuthForm>
-        ),
+        path: "/",
+        element: <PublicRoute />,
+        children: [
+          { path: "/", element: <Homepage /> },
+          { path: "basket", element: <Basket /> },
+          { path: "goodDetails/:article", element: <ItemDetail /> },
+          {
+            path: "goods/:category/:subcategory?",
+            element: <GoodsByCategory />,
+          },
+        ],
       },
       {
-        path: "login",
-        element: (
-          <AuthForm>
-            <Login />
-          </AuthForm>
-        ),
+        path: "/",
+        element: <PublicRoute restricted />,
+        children: [
+          {
+            path: "registration",
+            element: <Registration />,
+          },
+          {
+            path: "login",
+            element: <Login />,
+          },
+        ],
+      },
+      {
+        path: "/",
+        element: <PrivateRoute />,
+        children: [{ path: "profile", element: <div></div> }],
       },
     ],
   },

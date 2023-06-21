@@ -17,7 +17,7 @@ export const WrapperSliderImages = styled(StyledWrapperStandart)`
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.5;
-    z-index: 99999;
+    z-index: 9;
 
     & svg {
       width: 18px;

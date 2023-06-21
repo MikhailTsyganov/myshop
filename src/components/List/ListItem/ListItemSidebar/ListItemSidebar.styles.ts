@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledListItemSidebar = styled.li`
   display: flex;
-  height: 28px;
+  min-height: 28px;
   padding-left: 5px;
   align-items: center;
 
@@ -11,6 +11,11 @@ export const StyledListItemSidebar = styled.li`
 
   cursor: pointer;
 
+  & span {
+    width: 100%;
+    padding: 3px 5px 3px 44px;
+  }
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.white};
@@ -18,5 +23,10 @@ export const StyledListItemSidebar = styled.li`
 
   &:not(:last-child) {
     margin-bottom: 10px;
+  }
+
+  &.selectedListItemSidebar {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;

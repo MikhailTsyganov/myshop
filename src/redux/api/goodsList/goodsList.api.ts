@@ -8,17 +8,17 @@ export const goodsListApi = commonApi.injectEndpoints({
     }),
 
     getSubGoodsList: builder.query<
-      { id: string; name: string }[],
+      { id: string; name: string; path: string }[],
       { id: string }
     >({
       query: ({ id }) => `/listGoods/${id}`,
-      serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
-        return { queryArgs: { id: queryArgs.id } };
-      },
+      // serializeQueryArgs: ({ queryArgs, endpointDefinition, endpointName }) => {
+      //   return { queryArgs: { id: queryArgs.id } };
+      // },
       // Always merge incoming data to the cache entry
-      merge: (prevCache, newCache) => {
-        prevCache.push(...newCache);
-      },
+      // merge: (prevCache, newCache) => {
+      //   prevCache.push(...newCache);
+      // },
       // providesTags: (result) => {
       //   result
       //     ? [

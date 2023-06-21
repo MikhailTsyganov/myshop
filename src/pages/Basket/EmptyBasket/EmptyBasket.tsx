@@ -3,8 +3,15 @@ import { EmptyBasketProps } from ".";
 import { StyledEmptyBasket } from "./EmptyBasket.styles";
 import { ParagraphEmptyBasket } from "components/Paragraph/ParagraphEmptyBasket";
 import { Title1, ButtonEmptyBasket, WrapperBasketEmpty } from "components";
+import { useNavigate } from "react-router-dom";
 
 export const EmptyBasket: FC<EmptyBasketProps> = (props) => {
+  const navigate = useNavigate();
+
+  const onButtonClick = () => {
+    navigate("/");
+  };
+
   return (
     <StyledEmptyBasket {...props}>
       <WrapperBasketEmpty>
@@ -12,7 +19,9 @@ export const EmptyBasket: FC<EmptyBasketProps> = (props) => {
         <ParagraphEmptyBasket grey>
           Загляните на главную, чтобы выбрать товары или найдите нужное в поиске
         </ParagraphEmptyBasket>
-        <ButtonEmptyBasket primary>Перейти на главную</ButtonEmptyBasket>
+        <ButtonEmptyBasket primary onClick={onButtonClick}>
+          Перейти на главную
+        </ButtonEmptyBasket>
       </WrapperBasketEmpty>
     </StyledEmptyBasket>
   );

@@ -8,4 +8,8 @@ export const StyledBackdrop = styled.div`
   width: 100%;
   background-color: ${(props) => props.theme.colors.backdrop};
   z-index: 9999999999999;
+
+  body {
+    overflow-y: hidden;
+  }
 `;

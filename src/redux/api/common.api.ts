@@ -16,6 +16,7 @@ export const commonApi = createApi({
   }),
   tagTypes: [
     "Goods",
+    "GoodsById",
     "goodsList",
     "goodsSubList",
     "aboutUs",

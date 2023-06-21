@@ -49,6 +49,10 @@ export const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  .body--hidden {
+    overflow-y: hidden;
+  }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

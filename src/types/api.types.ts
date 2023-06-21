@@ -2,7 +2,13 @@ import { TGoodsItemHomepage } from "components";
 
 // goods.api
 
-export interface TGetAllGoodsBody {
+export interface IGetAllGoodsBody {
+  page: number;
+  limit: number;
+}
+export interface IGetGoodsByCategoryBody {
+  category?: string;
+  subcategory?: string;
   page: number;
   limit: number;
 }
@@ -66,4 +72,28 @@ export interface IGetGoodDetails {
   videos: { id: string; path: string }[];
   variants: IGoodDetailsVariants[];
   additionalInformation: IGoodDetailsAdditionalInformation[];
+}
+
+// sliderImages.api
+
+export interface IGetSliderImages {
+  id: number;
+  path: string;
+}
+
+// search.api
+
+export interface IGetSearchFavorites {
+  id: string;
+  name: string;
+}
+
+export interface IGetSearchAdditionalInfo {
+  typeOfGoods: {
+    id: string;
+    name: string;
+    parentName: string;
+    parentId: string;
+  }[];
+  brands: { id: string; name: string; img: string }[];
 }

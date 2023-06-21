@@ -1,4 +1,4 @@
-import { ButtonBasketFullDeliveryAddress, Title1, Title2 } from "components";
+import { Title1, Title2 } from "components";
 import { WrapperBasketFull } from "components/Wrapper/WrapperBasket/WrapperBasketFull";
 import { FC } from "react";
 import { FullBasketProps } from ".";
@@ -12,6 +12,7 @@ import { ButtonBasketFullOrder } from "components/Button/ButtonBasketFull/Button
 import { ParagraphFullBasket } from "components/Paragraph/ParagraphFullBasket";
 import { WrapperStandart } from "components/Wrapper/WrapperStandart";
 import { List } from "components/List/List";
+import { ShowButton } from "components/OpeningText/OpeningText.styles";
 // const selectedGoods = [
 //   {
 //     id: 1,
@@ -70,9 +71,7 @@ export const FullBasket: FC<FullBasketProps> = (props) => {
         </WrapperBasketFullFlex>
       </WrapperStandart>
       <WrapperBasketFull className="WrapperBasketFullTotal">
-        <ButtonBasketFullDeliveryAddress>
-          Выбрать адрес доставки
-        </ButtonBasketFullDeliveryAddress>
+        <ShowButton colorizedButton>Выбрать адрес доставки</ShowButton>
         <ParagraphFullBasket small grey>
           Товары n шт.
         </ParagraphFullBasket>

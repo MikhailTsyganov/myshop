@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { StyledButtonStandart } from "../ButtonStandart/ButtonStandart.styles";
 
 export const StyledHeaderPersonalButton = styled(StyledButtonStandart)`
+  display: flex;
+  flex-direction: column;
   height: 53px;
   background-color: inherit;
   border: none;

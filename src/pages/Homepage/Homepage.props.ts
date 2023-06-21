@@ -1,1 +1,1 @@
-export interface HomepageProps {};
+export interface HomepageProps {}

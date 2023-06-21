@@ -23,37 +23,35 @@ export function useWindowSize() {
 
   return windowSize;
 }
-export function useWindowSizeDevice(
-  setPage: React.Dispatch<React.SetStateAction<number>> | null = null
-) {
-  const [device, setDevice] = useState("");
-  const [numberOfGoodsInRequest, setNumberOfGoodsInRequest] = useState(0);
+
+export function useWindowSizeDevice() {
+  const [optionSize, setOptionSize] = useState({
+    device: "",
+    numberOfGoodsInRequest: 0,
+  });
 
   const { width } = useWindowSize();
+
   const theme = useTheme();
 
   useEffect(() => {
-    if (width > theme.windowSize.desktop && device !== "desktop") {
-      setDevice("desktop");
-      setNumberOfGoodsInRequest(1);
+    if (width > theme.windowSize.desktop && optionSize.device !== "desktop") {
+      setOptionSize({ device: "desktop", numberOfGoodsInRequest: 3 });
     }
     if (
       width < theme.windowSize.desktop &&
       width > theme.windowSize.tablet &&
-      device !== "tablet"
+      optionSize.device !== "tablet"
     ) {
-      setDevice("tablet");
-      setNumberOfGoodsInRequest(2);
+      setOptionSize({ device: "tablet", numberOfGoodsInRequest: 4 });
     }
-    if (width < theme.windowSize.tablet && device !== "mobile") {
-      setDevice("mobile");
-      setNumberOfGoodsInRequest(1);
+    if (width < theme.windowSize.tablet && optionSize.device !== "mobile") {
+      setOptionSize({ device: "mobile", numberOfGoodsInRequest: 3 });
     }
   }, [width]);
 
-  useEffect(() => {
-    setPage && setPage(1);
-  }, [device]);
-
-  return { device, numberOfGoodsInRequest };
+  return {
+    optionSize,
+    setOptionSize,
+  };
 }

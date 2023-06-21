@@ -4,4 +4,5 @@ export interface ParagraphStandartProps {
   black?: boolean;
   white?: boolean;
   grey?: boolean;
+  className?: string;
 }

@@ -15,34 +15,27 @@ import { sliderImagesApi } from "redux/api/sliderImages/sliderImages.api";
 export const Slider: FC<SliderProps> = (props) => {
   const { autoplay, autoplayTime = 5000 } = props;
 
-  const [images, setImages] = useState([]);
   const [slide, setSlide] = useState(0);
   const { elementWidth, refElement } = useRefWidthWindowResize();
 
-  const { data, isSuccess } = sliderImagesApi.useGetSliderImagesQuery("");
+  const { data: images = [] } = sliderImagesApi.useGetSliderImagesQuery("");
 
   const interval = useRef<NodeJS.Timeout | undefined>(undefined);
 
   useEffect(() => {
-    if (isSuccess) {
-      setImages(data);
-    }
-  }, [data, isSuccess]);
-
-  useEffect(() => {
-    if (!autoplay || images.length === 0) return;
+    if (!autoplay || images?.length === 0) return;
 
     interval.current = setInterval(() => {
       onButtonHandler();
+      console.log("onButtonHandler 29", autoplayTime);
     }, autoplayTime);
     return () => {
       clearInterval(interval.current);
     };
-  }, [images.length]);
+  }, [images?.length]);
 
   const onStopSlider = (e: React.MouseEvent) => {
-    if (!autoplay || images.length === 0) return;
-
+    if (!autoplay || images?.length === 0) return;
     switch (e.type) {
       case "mouseenter":
         clearInterval(interval.current);
@@ -50,6 +43,7 @@ export const Slider: FC<SliderProps> = (props) => {
       case "mouseleave":
         interval.current = setInterval(() => {
           onButtonHandler();
+          console.log("onButtonHandler 46", autoplayTime);
         }, autoplayTime);
         return;
     }
@@ -61,9 +55,7 @@ export const Slider: FC<SliderProps> = (props) => {
         setSlide((prevState) =>
           prevState === 0 ? images?.length - 1 : prevState - 1
         );
-
         return;
-
       default:
         setSlide((prevState) =>
           prevState === images?.length - 1 ? 0 : prevState + 1
@@ -101,14 +93,14 @@ export const Slider: FC<SliderProps> = (props) => {
           ref={refElement}
           offset={Number(elementWidth) * slide}
         >
-          {images.map(({ id, path }) => (
+          {images?.map(({ id, path }) => (
             <img key={id} src={path} alt={path} />
           ))}
         </WrapperImagesContainer>
       </WrapperSliderImages>
       <WrapperSliderPagination>
         <ul>
-          {images.map(({ id }, idx) => (
+          {images?.map(({ id }, idx) => (
             <li key={id}>
               <ButtonSliderDots
                 slide={slide}

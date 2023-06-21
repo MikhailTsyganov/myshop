@@ -54,6 +54,7 @@ export const Header: FC<HeaderProps> = (props) => {
 
   const onClickBurgerButton = () => {
     dispatch(sidebarToggle());
+    document.querySelector("body")!.classList.add("body--hidden");
   };
 
   return (

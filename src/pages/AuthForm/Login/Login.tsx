@@ -4,6 +4,7 @@ import { StyledLogin } from "./Login.styles";
 import { ButtonStandart, Input } from "components";
 import { useAppDispatch } from "redux/hooks/hooks";
 import { login } from "redux/auth/auth-operations";
+import { AuthForm } from "pages/AuthForm";
 
 export const Login: FC<LoginProps> = (props) => {
   const [email, setEmail] = useState("");
@@ -19,25 +20,27 @@ export const Login: FC<LoginProps> = (props) => {
   };
 
   return (
-    <StyledLogin {...props}>
-      <h1>Авторизация</h1>
-      <form onSubmit={handleSubmit}>
-        <Input
-          type="text"
-          value={email}
-          placeholder="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <Input
-          type="text"
-          value={password}
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <ButtonStandart type="submit" primary>
-          Войти
-        </ButtonStandart>
-      </form>
-    </StyledLogin>
+    <AuthForm>
+      <StyledLogin {...props}>
+        <h1>Авторизация</h1>
+        <form onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            value={email}
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="text"
+            value={password}
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <ButtonStandart type="submit" primary>
+            Войти
+          </ButtonStandart>
+        </form>
+      </StyledLogin>
+    </AuthForm>
   );
 };

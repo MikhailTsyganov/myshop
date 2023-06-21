@@ -10,4 +10,5 @@ export interface ListProps<T extends TListItem> {
   array: T[];
   Component: ComponentType<{ item: T }>;
   display?: TDisplay;
+  className?: string;
 }

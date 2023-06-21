@@ -35,22 +35,21 @@ export const ItemDetail: FC<ItemDetailProps> = (props) => {
   const { addGood } = selectedGoodsSlice.actions;
 
   const { article } = useParams();
+  console.log(article);
 
-  // const [sliderImages, setSliderImages] = useState([]);
-
-  const { device } = useWindowSizeDevice();
+  const { optionSize } = useWindowSizeDevice();
 
   const [getGoodDetails, { data }] = goodDetailsApi.useGetGoodDetailsMutation();
 
   console.log(data);
 
   useEffect(() => {
-    if (device === "mobile" || device === "tablet") {
+    if (optionSize.device === "mobile" || optionSize.device === "tablet") {
       fetchBigImages.current = false;
     } else {
       fetchBigImages.current = true;
     }
-  }, [device]);
+  }, [optionSize.device]);
 
   useEffect(() => {
     getGoodDetails({ article, fetchBigImages: fetchBigImages.current });
